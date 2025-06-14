@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuizBreaker | Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/assets/css/quiz.css" />
+  <script defer src="/assets/js/quiz.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="info">
+      <div><strong>Question <span id="qNum">1</span>/10</strong></div>
+      <div class="timer" id="timer">Loading...</div>
+    </div>
+    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="question-box">
+      <h2 id="questionTitle">Loading question...</h2>
+      <div class="options" id="options"></div>
+    </div>
+    <div class="btn-group">
+      <button onclick="prevQuestion()"><i class="bi bi-chevron-left"></i> Previous</button>
+      <button onclick="nextQuestion()">Next <i class="bi bi-chevron-right"></i></button>
+    </div>
+  </div>
+</body>
+</html>
