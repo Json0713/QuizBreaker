@@ -5,7 +5,7 @@ let questions = [], answers = [], current = 0, startTime, timerRef, overtime = 0
 document.addEventListener("DOMContentLoaded", async () => {
   const config = JSON.parse(localStorage.getItem("quizbreaker_config"));
   const user = JSON.parse(localStorage.getItem("quizbreaker_user"));
-  if (!config || !user) return location.href = "../app/index.html";
+  if (!config || !user) return location.href = "index.html";
 
   const difficultyTime = { Easy: 90, Medium: 120, Hard: 180 };
   startTime = new Date();
@@ -42,7 +42,7 @@ function formatTime(s) {
 
 async function loadQuizData(category, difficulty) {
   try {
-    const res = await fetch(`../data/quiz_${category}.json`);
+    const res = await fetch(`data/quiz_${category}.json`);
     const data = await res.json();
     return data[difficulty] || [];
   } catch (err) {
