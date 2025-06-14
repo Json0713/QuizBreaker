@@ -1,0 +1,53 @@
+{
+  "Easy": [
+    { "question": "What does 'CS' stand for in academics?", "options": ["Computer Studies", "Communication Systems", "Computer Science", "Control Systems"], "answer": "Computer Science", "type": "mcq" },
+    { "question": "Puzzle: I am a number you can multiply and still get smaller. What am I?", "hint": "Think decimals.", "answer": "fraction", "type": "puzzle" },
+    { "question": "Which one is a valid variable name in most programming languages?", "options": ["2name", "_name", "class", "@var"], "answer": "_name", "type": "mcq" },
+    { "question": "How many bits are in 1 byte?", "answer": "8", "type": "calculator" },
+    { "question": "SQL to retrieve all rows from 'books' table", "answer": "SELECT * FROM books;", "type": "sql" },
+    { "question": "Puzzle: What goes up but never comes down?", "hint": "Everyone experiences it.", "answer": "age", "type": "puzzle" },
+    { "question": "Which of these is a loop structure in C?", "options": ["for", "next", "repeat", "iterate"], "answer": "for", "type": "mcq" },
+    { "question": "Calculate 10 % 3", "answer": "1", "type": "calculator" },
+    { "question": "Puzzle: I’m not a bird but I can fly. I cry but I have no eyes. What am I?", "hint": "Think weather.", "answer": "cloud", "type": "puzzle" },
+    { "question": "Terminal command to list contents in current directory", "answer": "ls", "type": "terminal" },
+    { "question": "What keyword defines a function in Python?", "options": ["function", "def", "define", "fn"], "answer": "def", "type": "mcq" },
+    { "question": "Puzzle: I’m tall when I’m young and short when I’m old. What am I?", "hint": "Used for light.", "answer": "candle", "type": "puzzle" },
+    { "question": "How many bytes in 2 kilobytes?", "answer": "2048", "type": "calculator" },
+    { "question": "Write SQL to count all users", "answer": "SELECT COUNT(*) FROM users;", "type": "sql" },
+    { "question": "Puzzle: What gets sharper the more you use it?", "hint": "Not a knife.", "answer": "brain", "type": "puzzle" }
+  ],
+  "Medium": [
+    { "question": "Which of these is a compiled language?", "options": ["Python", "Java", "Ruby", "Bash"], "answer": "Java", "type": "mcq" },
+    { "question": "Puzzle: The more you take away, the bigger I become. What am I?", "hint": "A negative space.", "answer": "hole", "type": "puzzle" },
+    { "question": "What is Big O notation used for?", "options": ["Debugging", "Memory management", "Algorithm complexity", "Compilation"], "answer": "Algorithm complexity", "type": "mcq" },
+    { "question": "Output of: print(len('CS101'))", "answer": "5", "type": "calculator" },
+    { "question": "SQL to get names from students where grade > 80", "answer": "SELECT name FROM students WHERE grade > 80;", "type": "sql" },
+    { "question": "Puzzle: What has a head, tail, but no body?", "hint": "Used for money.", "answer": "coin", "type": "puzzle" },
+    { "question": "Terminal: show current path", "answer": "pwd", "type": "terminal" },
+    { "question": "Python function to add 2 numbers", "answer": "def add(a,b): return a+b", "type": "code" },
+    { "question": "Puzzle: What can fill a room but takes no space?", "hint": "It’s everywhere.", "answer": "light", "type": "puzzle" },
+    { "question": "What operator is used for exponentiation in Python?", "answer": "**", "type": "calculator" },
+    { "question": "SQL to find all records in 'logs' where status='error'", "answer": "SELECT * FROM logs WHERE status='error';", "type": "sql" },
+    { "question": "Puzzle: What has keys but no locks, and space but no room?", "hint": "Used for input.", "answer": "keyboard", "type": "puzzle" },
+    { "question": "What command clears terminal screen in Linux?", "answer": "clear", "type": "terminal" },
+    { "question": "Puzzle: The more of me you take, the more you leave. What am I?", "hint": "Related to footprints.", "answer": "footsteps", "type": "puzzle" },
+    { "question": "SQL to remove duplicates from a table select", "answer": "SELECT DISTINCT column FROM table;", "type": "sql" }
+  ],
+  "Hard": [
+    { "question": "Puzzle: What 11-letter word has each letter twice?", "hint": "Financial record keeper.", "answer": "bookkeeper", "type": "puzzle" },
+    { "question": "Terminal: view all hidden files", "answer": "ls -a", "type": "terminal" },
+    { "question": "Convert hexadecimal 1A to decimal", "answer": "26", "type": "calculator" },
+    { "question": "Python function to check even number", "answer": "def is_even(n): return n%2==0", "type": "code" },
+    { "question": "SQL to select users with email ending in .edu", "answer": "SELECT * FROM users WHERE email LIKE '%.edu';", "type": "sql" },
+    { "question": "Puzzle: What comes once in a year, twice in a week, but never in a day?", "hint": "It’s in spelling.", "answer": "e", "type": "puzzle" },
+    { "question": "Which RAID offers both striping and mirroring?", "options": ["RAID 0", "RAID 1", "RAID 5", "RAID 10"], "answer": "RAID 10", "type": "mcq" },
+    { "question": "SQL to update all users set status to 'inactive'", "answer": "UPDATE users SET status='inactive';", "type": "sql" },
+    { "question": "Puzzle: I get smaller every time you touch me. What am I?", "hint": "Think frozen.", "answer": "ice", "type": "puzzle" },
+    { "question": "Calculate 2^5", "answer": "32", "type": "calculator" },
+    { "question": "Terminal: test host reachability", "answer": "ping", "type": "terminal" },
+    { "question": "Python: return reverse of a string", "answer": "def rev(s): return s[::-1]", "type": "code" },
+    { "question": "Puzzle: What has one eye but can't see?", "hint": "In a storm.", "answer": "needle", "type": "puzzle" },
+    { "question": "How many bytes in 16 kilobytes?", "answer": "16384", "type": "calculator" },
+    { "question": "Puzzle: What disappears the moment you say its name?", "hint": "Silence, please.", "answer": "silence", "type": "puzzle" }
+  ]
+}

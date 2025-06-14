@@ -1,0 +1,53 @@
+{
+  "Easy": [
+    { "question": "What does 'IS' stand for in tech?", "options": ["Internet Systems", "Information Systems", "Interface Software", "Input Structure"], "answer": "Information Systems", "type": "mcq" },
+    { "question": "Puzzle: The more you take, the more you leave behind. What is it?", "hint": "Related to walking.", "answer": "footsteps", "type": "puzzle" },
+    { "question": "Which tool is used to analyze organizational systems?", "options": ["UML", "UI", "USB", "HTML"], "answer": "UML", "type": "mcq" },
+    { "question": "How many KB are there in 1 MB?", "answer": "1024", "type": "calculator" },
+    { "question": "SQL: Get all rows from 'employees'", "answer": "SELECT * FROM employees;", "type": "sql" },
+    { "question": "Puzzle: What has a heart that doesn't beat?", "hint": "Think nature.", "answer": "artichoke", "type": "puzzle" },
+    { "question": "Which diagram models data flows?", "options": ["DFD", "ERD", "Gantt", "PERT"], "answer": "DFD", "type": "mcq" },
+    { "question": "Calculate 5 * 8", "answer": "40", "type": "calculator" },
+    { "question": "Puzzle: What can fill a room but takes no space?", "hint": "It's everywhere.", "answer": "light", "type": "puzzle" },
+    { "question": "Terminal: clear command screen", "answer": "clear", "type": "terminal" },
+    { "question": "Common backend database for IS", "options": ["MongoDB", "MySQL", "Redis", "Neo4j"], "answer": "MySQL", "type": "mcq" },
+    { "question": "Puzzle: What gets wetter the more it dries?", "hint": "Used after a bath.", "answer": "towel", "type": "puzzle" },
+    { "question": "How many bytes in 4 kilobytes?", "answer": "4096", "type": "calculator" },
+    { "question": "SQL to count records in a table", "answer": "SELECT COUNT(*) FROM table;", "type": "sql" },
+    { "question": "Puzzle: What runs but never walks?", "hint": "Think of water.", "answer": "river", "type": "puzzle" }
+  ],
+  "Medium": [
+    { "question": "What is the main goal of IS?", "options": ["Data storage", "Information delivery", "Program execution", "Code compilation"], "answer": "Information delivery", "type": "mcq" },
+    { "question": "Puzzle: What can’t talk but replies when spoken to?", "hint": "Think of sound reflection.", "answer": "echo", "type": "puzzle" },
+    { "question": "Which of these is a CRM system?", "options": ["SAP", "Salesforce", "Photoshop", "Visual Studio"], "answer": "Salesforce", "type": "mcq" },
+    { "question": "Output of: len('IS2023')", "answer": "6", "type": "calculator" },
+    { "question": "SQL to get emails from 'users' where verified=1", "answer": "SELECT email FROM users WHERE verified=1;", "type": "sql" },
+    { "question": "Puzzle: What has many teeth but can’t bite?", "hint": "Everyday object.", "answer": "comb", "type": "puzzle" },
+    { "question": "Terminal: show disk usage", "answer": "df -h", "type": "terminal" },
+    { "question": "Code: Write Python function to square a number", "answer": "def square(n): return n*n", "type": "code" },
+    { "question": "Puzzle: What has an eye but cannot see?", "hint": "Common tool.", "answer": "needle", "type": "puzzle" },
+    { "question": "Which is a type of IS model?", "options": ["Waterfall", "Spiral", "SDLC", "MIS"], "answer": "MIS", "type": "mcq" },
+    { "question": "Calculate 2 + 2 * 2", "answer": "6", "type": "calculator" },
+    { "question": "SQL to delete rows with null email", "answer": "DELETE FROM users WHERE email IS NULL;", "type": "sql" },
+    { "question": "Terminal: see running processes", "answer": "top", "type": "terminal" },
+    { "question": "Puzzle: I shave every day, but my beard stays the same. Who am I?", "hint": "Barbers do this.", "answer": "barber", "type": "puzzle" },
+    { "question": "Python: get length of a list 'a'", "answer": "len(a)", "type": "code" }
+  ],
+  "Hard": [
+    { "question": "Puzzle: What disappears when you say its name?", "hint": "Quiet please.", "answer": "silence", "type": "puzzle" },
+    { "question": "Terminal: check network interface info", "answer": "ifconfig", "type": "terminal" },
+    { "question": "Convert binary 1101 to decimal", "answer": "13", "type": "calculator" },
+    { "question": "Python: check prime", "answer": "def is_prime(n): return all(n%i for i in range(2,n))", "type": "code" },
+    { "question": "SQL to get users registered after 2023", "answer": "SELECT * FROM users WHERE year > 2023;", "type": "sql" },
+    { "question": "Puzzle: What comes once in a minute, twice in a moment, never in a thousand years?", "hint": "Think letters.", "answer": "m", "type": "puzzle" },
+    { "question": "What DBMS means?", "options": ["Database Manager Software", "Database Management System", "Data Business Model Software", "Data Broker Modeling System"], "answer": "Database Management System", "type": "mcq" },
+    { "question": "SQL to change column name in table", "answer": "ALTER TABLE users RENAME COLUMN old TO new;", "type": "sql" },
+    { "question": "Puzzle: What invention lets you look right through a wall?", "hint": "Not X-ray.", "answer": "window", "type": "puzzle" },
+    { "question": "How many MB in 2GB?", "answer": "2048", "type": "calculator" },
+    { "question": "Terminal: show current directory", "answer": "pwd", "type": "terminal" },
+    { "question": "Python: reverse string", "answer": "def rev(s): return s[::-1]", "type": "code" },
+    { "question": "Puzzle: What can’t be used until it’s broken?", "hint": "You eat it.", "answer": "egg", "type": "puzzle" },
+    { "question": "Calculate 256 / 4", "answer": "64", "type": "calculator" },
+    { "question": "Puzzle: What’s full of holes but still holds water?", "hint": "Kitchen item.", "answer": "sponge", "type": "puzzle" }
+  ]
+}
