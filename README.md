@@ -74,7 +74,7 @@ Open `index.html` directly in your browser.
 
 ## 📸 Screenshots
 
-> Add your screenshots inside the `/assets/screenshot/` folder
+> UI/UX 
 
 <div align="center" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
   <img src="/assets/img/Screenshot_20250615-201534.jpg" alt="Question UI" width="45%"/>
