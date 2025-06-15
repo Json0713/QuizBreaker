@@ -32,7 +32,7 @@
 
 function logout() {
   localStorage.removeItem("quizbreaker_user");
-  location.href = "/index.html";
+  location.href = "../../index.html";
 }
 
 function startQuiz() {
