@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       sessionStorage.setItem("fromGame", "true");
-      window.location.href = "game.html";
+      window.location.href = "src/app/game.html";
     }, 3000);
   });
 });
@@ -90,7 +90,7 @@ function createUserItem(u, index) {
 function confirmLogin() {
   if (!pendingUser) return;
   localStorage.setItem("quizbreaker_user", JSON.stringify(pendingUser));
-  window.location.href = "game.html";
+  window.location.href = "src/app/game.html";
 }
 
 function renderUsers() {

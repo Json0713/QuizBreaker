@@ -1,7 +1,7 @@
     let pendingDeleteIndex = null, pendingUser = null;
     document.addEventListener("DOMContentLoaded", () => {
       const user = JSON.parse(localStorage.getItem("quizbreaker_user"));
-      if (!user) return location.href = "../app/index.html";
+      if (!user) return location.href = "/index.html";
       document.getElementById("userAvatar").textContent = user.name.charAt(0).toUpperCase();
       document.querySelectorAll(".displayName").forEach(e => e.textContent = user.name);
       document.querySelectorAll(".displayJoined").forEach(e => e.textContent = new Date(user.joinedAt).toLocaleString());
@@ -32,7 +32,7 @@
 
 function logout() {
   localStorage.removeItem("quizbreaker_user");
-  location.href = "index.html";
+  location.href = "/index.html";
 }
 
 function startQuiz() {
