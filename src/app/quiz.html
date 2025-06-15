@@ -10,20 +10,29 @@
   <script defer src="../../assets/js/quiz.js"></script>
 </head>
 <body>
-  <div class="container">
-    <div class="info">
+  <main class="container">
+    <header class="info">
       <div><strong>Question <span id="qNum">1</span>/10</strong></div>
       <div class="timer" id="timer">Loading...</div>
+    </header>
+
+    <div class="progress" aria-label="quiz progress">
+      <div class="progress-bar" id="progressBar"></div>
     </div>
-    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-    <div class="question-box">
+
+    <section class="question-box">
       <h2 id="questionTitle">Loading question...</h2>
       <div class="options" id="options"></div>
-    </div>
-    <div class="btn-group">
-      <button onclick="prevQuestion()"><i class="bi bi-chevron-left"></i> Previous</button>
-      <button onclick="nextQuestion()">Next <i class="bi bi-chevron-right"></i></button>
-    </div>
-  </div>
+    </section>
+
+    <nav class="btn-group" aria-label="Question navigation">
+      <button onclick="prevQuestion()" aria-label="Previous question">
+        <i class="bi bi-chevron-left"></i> Previous
+      </button>
+      <button onclick="nextQuestion()" aria-label="Next question">
+        Next <i class="bi bi-chevron-right"></i>
+      </button>
+    </nav>
+  </main>
 </body>
 </html>

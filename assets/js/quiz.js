@@ -68,9 +68,8 @@ function showQuestion() {
 
   if (q.type === "puzzle") {
     wrapper.innerHTML = `
-      <div class='puzzle-box'>
-        <button class="btn btn-sm hint-toggle" onclick="toggleHint(this)">💡 Show Hint</button>
-        <div class="hint-content hidden"><strong>Hint:</strong> ${q.hint || "Solve the puzzle."}</div>
+      <div class='puzzle-box revealed'>
+        <div class="hint-content"><strong>Hint:</strong> ${q.hint || "Solve the puzzle."}</div>
       </div>
       <input type='text' id='puzzleInput' class='form-control' value='${saved}' placeholder='Your answer...' style='width:100%;padding:0.75rem;margin-top:1rem;border-radius:8px;border:none;background:#2a2a2a;color:#f5f5f5;' />
     `;
@@ -94,13 +93,6 @@ function showQuestion() {
   }
 
   document.getElementById("progressBar").style.width = `${((current + 1) / questions.length) * 100}%`;
-}
-
-function toggleHint(btn) {
-  const box = btn.closest(".puzzle-box");
-  const hint = box.querySelector(".hint-content");
-  hint.classList.toggle("hidden");
-  btn.textContent = hint.classList.contains("hidden") ? "💡 Show Hint" : "❌ Hide Hint";
 }
 
 function getUserInput(q) {
