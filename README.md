@@ -77,8 +77,8 @@ Open `index.html` directly in your browser.
 > Add your screenshots inside the `/assets/screenshot/` folder
 
 <div align="center" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-  <img src="assets/screenshot/question-ui.png" alt="Question UI" width="45%"/>
-  <img src="assets/screenshot/result-ui.png" alt="Score Result UI" width="45%"/>
+  <img src="/assets/img/Screenshot_20250615-201534.jpg" alt="Question UI" width="45%"/>
+  <img src="/assets/img/Screenshot_20250615-201609.jpg" alt="Score Result UI" width="45%"/>
 </div>
 
 ---
