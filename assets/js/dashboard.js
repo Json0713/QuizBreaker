@@ -37,9 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("overallAccuracy").textContent = attempted ? Math.round((correct / attempted) * 100) + "%" : "0%";
   document.getElementById("avgTime").textContent = formatTime(avgTime);
   
+  showLastFeedback(userResults);
   renderScoreChart(userResults);
   renderCategoryPie(userResults);
-  showLastFeedback(userResults);
+  renderPassFailChart(userResults);
+  renderDifficultyChart(userResults);
+  renderRecentList(userResults);
+  renderStreakData(userResults);
 });
 
 function formatTime(s) {
@@ -64,12 +68,8 @@ function renderScoreChart(data) {
     },
     options: {
       responsive: true,
-      plugins: {
-        legend: { display: true }
-      },
-      scales: {
-        y: { beginAtZero: true, max: 10 }
-      }
+      plugins: { legend: { display: true } },
+      scales: { y: { beginAtZero: true, max: 10 } }
     }
   });
 }
@@ -84,47 +84,93 @@ function renderCategoryPie(data) {
   
   const labels = Object.keys(categories);
   const values = labels.map(l => Math.round((categories[l].correct / categories[l].total) * 100));
-  
   const colors = [
-    "rgba(0, 217, 255, 0.5)",
-    "rgba(0, 255, 144, 0.5)",
-    "rgba(255, 193, 7, 0.5)",
-    "rgba(255, 99, 132, 0.5)",
-    "rgba(102, 217, 239, 0.5)",
-    "rgba(204, 102, 255, 0.5)"
+    "rgba(0, 217, 255, 0.5)", "rgba(0, 255, 144, 0.5)", "rgba(255, 193, 7, 0.5)",
+    "rgba(255, 99, 132, 0.5)", "rgba(102, 217, 239, 0.5)", "rgba(204, 102, 255, 0.5)"
   ];
   
-  const ctx = document.getElementById("categoryChart").getContext("2d");
-  new Chart(ctx, {
+  new Chart(document.getElementById("categoryChart"), {
     type: "pie",
     data: {
       labels,
+      datasets: [{ data: values, backgroundColor: colors.slice(0, labels.length), borderWidth: 1 }]
+    },
+    options: {
+      plugins: { legend: { position: 'right', labels: { color: '#ccc' } } },
+      responsive: true
+    }
+  });
+  
+  const mostPlayed = Object.entries(categories).sort((a, b) => b[1].total - a[1].total)[0];
+  document.getElementById("mostPlayedCategory").textContent = mostPlayed ? `${mostPlayed[0]} (${mostPlayed[1].total}x)` : "--";
+}
+
+function renderPassFailChart(data) {
+  const pass = data.filter(d => d.passed).length;
+  const fail = data.length - pass;
+  
+  new Chart(document.getElementById("passFailChart"), {
+    type: "doughnut",
+    data: {
+      labels: ["Passed", "Failed"],
       datasets: [{
-        label: "Category Accuracy",
-        data: values,
-        backgroundColor: colors.slice(0, labels.length),
-        borderWidth: 1
+        data: [pass, fail],
+        backgroundColor: ["rgba(0,255,144,0.4)", "rgba(255,99,132,0.4)"]
       }]
     },
     options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'right',
-          labels: {
-            color: '#ccc',
-            boxWidth: 14,
-            padding: 15
-          }
-        },
-        tooltip: {
-          callbacks: {
-            label: ctx => `${ctx.label}: ${ctx.raw}%`
-          }
-        }
-      }
+      plugins: { legend: { position: 'bottom' } },
+      responsive: true
     }
   });
+}
+
+function renderDifficultyChart(data) {
+  const diff = {};
+  data.forEach(d => {
+    if (!diff[d.difficulty]) diff[d.difficulty] = { correct: 0, total: 0 };
+    diff[d.difficulty].correct += d.score;
+    diff[d.difficulty].total += d.total;
+  });
+  
+  const labels = Object.keys(diff);
+  const values = labels.map(l => Math.round((diff[l].correct / diff[l].total) * 100));
+  
+  new Chart(document.getElementById("difficultyChart"), {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [{ label: "% Accuracy", data: values, backgroundColor: "rgba(0,217,255,0.4)" }]
+    },
+    options: {
+      scales: { y: { beginAtZero: true, max: 100 } },
+      plugins: { legend: { display: false } },
+      responsive: true
+    }
+  });
+}
+
+function renderStreakData(data) {
+  let streak = 0;
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].passed) streak++;
+    else break;
+  }
+  document.getElementById("passStreak").textContent = `${streak} quiz${streak !== 1 ? 'zes' : ''}`;
+  
+  const bestTime = data.filter(d => d.passed).sort((a, b) => a.time - b.time)[0];
+  document.getElementById("bestTime").textContent = bestTime ? formatTime(bestTime.time) : "--";
+}
+
+function renderRecentList(data) {
+  const list = document.getElementById("recentSummary");
+  const latest = data.slice(0, 5);
+  list.innerHTML = latest.map(q => `
+    <div class="quiz-line ${q.passed ? 'passed' : 'failed'}">
+      <span>${q.category} (${q.difficulty})</span>
+      <span>${q.score}/${q.total}</span>
+    </div>
+  `).join("");
 }
 
 function showLastFeedback(data) {

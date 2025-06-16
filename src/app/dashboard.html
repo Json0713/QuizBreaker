@@ -22,7 +22,7 @@
         </div>
       </div>
       <a class="footer-btn" style="width:auto; padding:0.4rem 0.8rem;" id="backBtn" title="Back to Game">
-        <i class="bi bi-arrow-left"></i>
+        <i class="bi bi-columns-gap py-1"></i>
       </a>
     </div>
 
@@ -37,39 +37,55 @@
 
     <section class="row g-3 mb-4">
       <div class="col-6 col-md-3">
-        <div class="card stat-card border-info">
-          <div class="card-body text-center">
-            <i class="bi bi-journal-check fs-4 text-info"></i>
-            <h6 class="card-title mt-2">Total Quizzes</h6>
-            <p id="totalQuizzes" class="fs-5 mb-0">--</p>
-          </div>
+        <div class="card stat-card border-info text-center">
+          <i class="bi bi-journal-check fs-4 text-info"></i>
+          <h6 class="card-title mt-2">Total Quizzes</h6>
+          <p id="totalQuizzes" class="fs-5 mb-0">--</p>
         </div>
       </div>
       <div class="col-6 col-md-3">
-        <div class="card stat-card border-success">
-          <div class="card-body text-center">
-            <i class="bi bi-bullseye fs-4 text-success"></i>
-            <h6 class="card-title mt-2">Accuracy</h6>
-            <p id="overallAccuracy" class="fs-5 mb-0">--%</p>
-          </div>
+        <div class="card stat-card border-success text-center">
+          <i class="bi bi-bullseye fs-4 text-success"></i>
+          <h6 class="card-title mt-2">Accuracy</h6>
+          <p id="overallAccuracy" class="fs-5 mb-0">--%</p>
         </div>
       </div>
       <div class="col-6 col-md-3">
-        <div class="card stat-card border-warning">
-          <div class="card-body text-center">
-            <i class="bi bi-stopwatch fs-4 text-warning"></i>
-            <h6 class="card-title mt-2">Avg Time</h6>
-            <p id="avgTime" class="fs-5 mb-0">--</p>
-          </div>
+        <div class="card stat-card border-warning text-center">
+          <i class="bi bi-stopwatch fs-4 text-warning"></i>
+          <h6 class="card-title mt-2">Avg Time</h6>
+          <p id="avgTime" class="fs-5 mb-0">--</p>
         </div>
       </div>
       <div class="col-6 col-md-3">
-        <div class="card stat-card border-muted">
-          <div class="card-body text-center">
-            <i id="statusIcon" class="bi bi-wifi fs-4"></i>
-            <h6 class="card-title mt-2">Status</h6>
-            <p id="onlineStatus" class="fs-5 mb-0">Checking...</p>
-          </div>
+        <div class="card stat-card border-muted text-center">
+          <i id="statusIcon" class="bi bi-wifi fs-4"></i>
+          <h6 class="card-title mt-2">Status</h6>
+          <p id="onlineStatus" class="fs-5 mb-0">Checking...</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="row g-3 mb-4">
+      <div class="col-6 col-md-4">
+        <div class="card stat-card border-primary text-center">
+          <i class="bi bi-bar-chart-line fs-4 text-primary"></i>
+          <h6 class="card-title mt-2">Most Played</h6>
+          <p id="mostPlayedCategory" class="fs-6 mb-0">--</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4">
+        <div class="card stat-card border-secondary text-center">
+          <i class="bi bi-lightning fs-4 text-secondary"></i>
+          <h6 class="card-title mt-2">Best Time</h6>
+          <p id="bestTime" class="fs-6 mb-0">--</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4">
+        <div class="card stat-card border-danger text-center">
+          <i class="bi bi-fire fs-4 text-danger"></i>
+          <h6 class="card-title mt-2">Streak</h6>
+          <p id="passStreak" class="fs-6 mb-0">--</p>
         </div>
       </div>
     </section>
@@ -86,6 +102,25 @@
       <div class="chart-container">
         <canvas id="categoryChart"></canvas>
       </div>
+    </section>
+
+    <section class="mb-4">
+      <h4 class="text-info mb-3"><i class="bi bi-pie-chart-fill me-2"></i> Pass vs Fail</h4>
+      <div class="chart-container">
+        <canvas id="passFailChart"></canvas>
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <h4 class="text-info mb-3"><i class="bi bi-sliders me-2"></i> Accuracy by Difficulty</h4>
+      <div class="chart-container">
+        <canvas id="difficultyChart"></canvas>
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <h4 class="text-info mb-3"><i class="bi bi-list-ul me-2"></i> Last 5 Quizzes</h4>
+      <div class="recent-list" id="recentSummary"></div>
     </section>
   </main>
 
