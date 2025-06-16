@@ -88,6 +88,7 @@ body {
   padding: 1rem;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  border: 2px solid rgba(0, 217, 255, 0.4);
 }
 
 canvas {
@@ -108,11 +109,12 @@ canvas {
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   transition: all 0.3s ease-in-out;
   flex-wrap: wrap;
+  border-left: 4px solid #00d9ff;
 }
 
-.alert-feedback.success { background-color: rgba(0, 255, 144, 0.1); color: #00ff90; }
-.alert-feedback.warning { background-color: rgba(255, 193, 7, 0.1); color: #ffc107; }
-.alert-feedback.danger { background-color: rgba(255, 99, 132, 0.1); color: #ff6b6b; }
+.alert-feedback.success { background-color: rgba(0, 255, 144, 0.1); color: #00ff90; border-left-color: #00ff90; }
+.alert-feedback.warning { background-color: rgba(255, 193, 7, 0.1); color: #ffc107; border-left-color: #ffc107; }
+.alert-feedback.danger { background-color: rgba(255, 99, 132, 0.1); color: #ff6b6b; border-left-color: #ff6b6b; }
 
 .alert-feedback .btn-close {
   background: none;
@@ -169,6 +171,37 @@ canvas {
 
 .recent-list .quiz-line.failed { border-left-color: #ff5c5c; }
 .recent-list .quiz-line.passed { border-left-color: #00ff90; }
+
+.progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.progress-item {
+  background: #2a2a2a;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.progress-item .label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.progress-item .progress {
+  height: 8px;
+  border-radius: 6px;
+  background: #333;
+}
+
+.progress-item .progress-bar {
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
 
 @media (max-width: 576px) {
   .stat-card .fs-5, .stat-card .fs-6 {

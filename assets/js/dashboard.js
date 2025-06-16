@@ -14,19 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("feedbackAlert").classList.add("d-none");
   });
   
-  const statusEl = document.getElementById("onlineStatus");
-  const statusIcon = document.getElementById("statusIcon");
-  const updateStatus = () => {
-    const online = navigator.onLine;
-    statusEl.textContent = online ? "Online" : "Offline";
-    statusEl.classList.toggle("text-success", online);
-    statusEl.classList.toggle("text-danger", !online);
-    statusIcon.className = online ? "bi bi-wifi fs-4 text-success" : "bi bi-wifi-off fs-4 text-danger";
-  };
-  updateStatus();
-  window.addEventListener("online", updateStatus);
-  window.addEventListener("offline", updateStatus);
-  
   const userResults = recent.filter(q => q.user === user.name);
   const total = userResults.length;
   const correct = userResults.reduce((sum, r) => sum + r.score, 0);
@@ -39,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   showLastFeedback(userResults);
   renderScoreChart(userResults);
-  renderCategoryPie(userResults);
+  renderCategoryAccuracyBars(userResults);
   renderPassFailChart(userResults);
   renderDifficultyChart(userResults);
   renderRecentList(userResults);
@@ -74,48 +61,53 @@ function renderScoreChart(data) {
   });
 }
 
-function renderCategoryPie(data) {
+function renderCategoryAccuracyBars(data) {
   const categories = {};
   data.forEach(d => {
-    categories[d.category] = categories[d.category] || { correct: 0, total: 0 };
+    if (!categories[d.category]) categories[d.category] = { correct: 0, total: 0, count: 0 };
     categories[d.category].correct += d.score;
     categories[d.category].total += d.total;
+    categories[d.category].count += 1;
   });
   
-  const labels = Object.keys(categories);
-  const values = labels.map(l => Math.round((categories[l].correct / categories[l].total) * 100));
-  const colors = [
-    "rgba(0, 217, 255, 0.5)", "rgba(0, 255, 144, 0.5)", "rgba(255, 193, 7, 0.5)",
-    "rgba(255, 99, 132, 0.5)", "rgba(102, 217, 239, 0.5)", "rgba(204, 102, 255, 0.5)"
-  ];
-  
-  new Chart(document.getElementById("categoryChart"), {
-    type: "pie",
-    data: {
-      labels,
-      datasets: [{ data: values, backgroundColor: colors.slice(0, labels.length), borderWidth: 1 }]
-    },
-    options: {
-      plugins: { legend: { position: 'right', labels: { color: '#ccc' } } },
-      responsive: true
-    }
+  const container = document.getElementById("categoryAccuracyBars");
+  container.innerHTML = "";
+  Object.entries(categories).forEach(([cat, val], i) => {
+    const acc = Math.round((val.correct / val.total) * 100);
+    const progressBar = document.createElement("div");
+    progressBar.className = "progress-item";
+    progressBar.innerHTML = `
+      <div class="label">
+        <span>${cat}</span><span>${acc}%</span>
+      </div>
+      <div class="progress">
+        <div class="progress-bar bg-${getColor(i)}" role="progressbar" style="width:${acc}%"></div>
+      </div>
+    `;
+    container.appendChild(progressBar);
   });
   
-  const mostPlayed = Object.entries(categories).sort((a, b) => b[1].total - a[1].total)[0];
-  document.getElementById("mostPlayedCategory").textContent = mostPlayed ? `${mostPlayed[0]} (${mostPlayed[1].total}x)` : "--";
+  const mostPlayed = Object.entries(categories).sort((a, b) => b[1].count - a[1].count)[0];
+  document.getElementById("mostPlayedCategory").textContent = mostPlayed ? `${mostPlayed[0]} (${mostPlayed[1].count}x)` : "--";
+}
+
+function getColor(index) {
+  const colors = ["info", "success", "warning", "danger", "primary", "secondary"];
+  return colors[index % colors.length];
 }
 
 function renderPassFailChart(data) {
   const pass = data.filter(d => d.passed).length;
   const fail = data.length - pass;
-  
   new Chart(document.getElementById("passFailChart"), {
     type: "doughnut",
     data: {
       labels: ["Passed", "Failed"],
       datasets: [{
         data: [pass, fail],
-        backgroundColor: ["rgba(0,255,144,0.4)", "rgba(255,99,132,0.4)"]
+        backgroundColor: ["rgba(0,255,144,0.4)", "rgba(255,99,132,0.4)"],
+        borderColor: "#00d9ff",
+        borderWidth: 2
       }]
     },
     options: {
@@ -157,7 +149,6 @@ function renderStreakData(data) {
     else break;
   }
   document.getElementById("passStreak").textContent = `${streak} quiz${streak !== 1 ? 'zes' : ''}`;
-  
   const bestTime = data.filter(d => d.passed).sort((a, b) => a.time - b.time)[0];
   document.getElementById("bestTime").textContent = bestTime ? formatTime(bestTime.time) : "--";
 }
