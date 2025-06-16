@@ -1,32 +1,95 @@
+<!-- File: src/app/dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Test</title>
-  <!-- Bootstrap CSS -->
+  <title>QuizBreaker | Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS (inside assets) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="bg-dark text-light">
-  <div class="container py-5 text-center">
-    <h1 class="mb-4">Dashboard Page</h1>
-
-    <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
-      <a href="../../index.html" class="btn btn-outline-light rounded-4">Home</a>
-      <a href="game.html" class="btn btn-outline-light rounded-4">Game</a>
-      <a href="quiz.html" class="btn btn-outline-light rounded-4">Quiz</a>
-      <a href="summary.html" class="btn btn-outline-light rounded-4">Summary</a>
+<body>
+  <main class="container-fluid">
+    <div class="header">
+      <div class="user-info" id="userInfo">
+        <div class="avatar" id="userAvatar"></div>
+        <div>
+          <div class="displayName"></div>
+          <div class="meta displayJoined"></div>
+        </div>
+      </div>
+      <a class="footer-btn" style="width:auto; padding:0.4rem 0.8rem;" id="backBtn" title="Back to Game">
+        <i class="bi bi-arrow-left"></i>
+      </a>
     </div>
 
-    <button id="testBtn" class="btn btn-primary">Click Me!</button>
-    <p id="output" class="mt-4"></p>
-  </div>
+    <h2 class="text-info mb-3"><i class="bi bi-graph-up-arrow me-2"></i> Dashboard</h2>
 
-  <!-- Bootstrap JS -->
+    <section id="feedbackAlert" class="alert-feedback d-none">
+      <div class="alert-content">
+        <span id="feedbackMessage">Feedback message...</span>
+        <button class="btn-close ms-3" aria-label="Close"></button>
+      </div>
+    </section>
+
+    <section class="row g-3 mb-4">
+      <div class="col-6 col-md-3">
+        <div class="card stat-card border-info">
+          <div class="card-body text-center">
+            <i class="bi bi-journal-check fs-4 text-info"></i>
+            <h6 class="card-title mt-2">Total Quizzes</h6>
+            <p id="totalQuizzes" class="fs-5 mb-0">--</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card stat-card border-success">
+          <div class="card-body text-center">
+            <i class="bi bi-bullseye fs-4 text-success"></i>
+            <h6 class="card-title mt-2">Accuracy</h6>
+            <p id="overallAccuracy" class="fs-5 mb-0">--%</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card stat-card border-warning">
+          <div class="card-body text-center">
+            <i class="bi bi-stopwatch fs-4 text-warning"></i>
+            <h6 class="card-title mt-2">Avg Time</h6>
+            <p id="avgTime" class="fs-5 mb-0">--</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card stat-card border-muted">
+          <div class="card-body text-center">
+            <i id="statusIcon" class="bi bi-wifi fs-4"></i>
+            <h6 class="card-title mt-2">Status</h6>
+            <p id="onlineStatus" class="fs-5 mb-0">Checking...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <h4 class="text-info mb-3"><i class="bi bi-activity me-2"></i> Score Trends</h4>
+      <div class="chart-container">
+        <canvas id="scoreChart"></canvas>
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <h4 class="text-info mb-3"><i class="bi bi-pie-chart me-2"></i> Category Accuracy</h4>
+      <div class="chart-container">
+        <canvas id="categoryChart"></canvas>
+      </div>
+    </section>
+  </main>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom JS (inside assets) -->
   <script src="../../assets/js/dashboard.js"></script>
 </body>
 </html>
