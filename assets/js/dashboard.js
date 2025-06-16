@@ -39,7 +39,17 @@ function formatTime(s) {
   return `${m}:${sec}`;
 }
 
+function showNoData(containerId) {
+  const container = document.getElementById(containerId);
+  if (container.tagName === 'CANVAS') {
+    container.parentElement.innerHTML = '<div class="chart-empty">No data available yet</div>';
+  } else {
+    container.innerHTML = '<div class="chart-empty">No data available yet</div>';
+  }
+}
+
 function renderScoreChart(data) {
+  if (!data.length) return showNoData("scoreChart");
   const ctx = document.getElementById("scoreChart").getContext("2d");
   new Chart(ctx, {
     type: "line",
@@ -69,10 +79,12 @@ function renderCategoryAccuracyBars(data) {
     categories[d.category].total += d.total;
     categories[d.category].count += 1;
   });
-  
   const container = document.getElementById("categoryAccuracyBars");
   container.innerHTML = "";
-  Object.entries(categories).forEach(([cat, val], i) => {
+  const entries = Object.entries(categories);
+  if (!entries.length) return container.innerHTML = '<div class="chart-empty">No data available yet</div>';
+  
+  entries.forEach(([cat, val], i) => {
     const acc = Math.round((val.correct / val.total) * 100);
     const progressBar = document.createElement("div");
     progressBar.className = "progress-item";
@@ -87,7 +99,7 @@ function renderCategoryAccuracyBars(data) {
     container.appendChild(progressBar);
   });
   
-  const mostPlayed = Object.entries(categories).sort((a, b) => b[1].count - a[1].count)[0];
+  const mostPlayed = entries.sort((a, b) => b[1].count - a[1].count)[0];
   document.getElementById("mostPlayedCategory").textContent = mostPlayed ? `${mostPlayed[0]} (${mostPlayed[1].count}x)` : "--";
 }
 
@@ -97,6 +109,7 @@ function getColor(index) {
 }
 
 function renderPassFailChart(data) {
+  if (!data.length) return showNoData("passFailChart");
   const pass = data.filter(d => d.passed).length;
   const fail = data.length - pass;
   new Chart(document.getElementById("passFailChart"), {
@@ -105,9 +118,7 @@ function renderPassFailChart(data) {
       labels: ["Passed", "Failed"],
       datasets: [{
         data: [pass, fail],
-        backgroundColor: ["rgba(0,255,144,0.4)", "rgba(255,99,132,0.4)"],
-        borderColor: "#00d9ff",
-        borderWidth: 2
+        backgroundColor: ["#00d9ff", "rgba(180, 180, 180, 0.3)"]
       }]
     },
     options: {
@@ -124,8 +135,9 @@ function renderDifficultyChart(data) {
     diff[d.difficulty].correct += d.score;
     diff[d.difficulty].total += d.total;
   });
-  
   const labels = Object.keys(diff);
+  if (!labels.length) return showNoData("difficultyChart");
+  
   const values = labels.map(l => Math.round((diff[l].correct / diff[l].total) * 100));
   
   new Chart(document.getElementById("difficultyChart"), {
@@ -155,6 +167,7 @@ function renderStreakData(data) {
 
 function renderRecentList(data) {
   const list = document.getElementById("recentSummary");
+  if (!data.length) return list.innerHTML = '<div class="chart-empty">No recent quizzes taken yet</div>';
   const latest = data.slice(0, 5);
   list.innerHTML = latest.map(q => `
     <div class="quiz-line ${q.passed ? 'passed' : 'failed'}">

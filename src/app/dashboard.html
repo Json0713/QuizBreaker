@@ -31,7 +31,9 @@
     <section id="feedbackAlert" class="alert-feedback d-none">
       <div class="alert-content">
         <span id="feedbackMessage">Feedback message...</span>
-        <button class="btn-close ms-3" aria-label="Close"></button>
+        <button class="btn-close" aria-label="Close">
+          <i class="bi bi-x-lg"></i>
+        </button>
       </div>
     </section>
 
@@ -86,21 +88,21 @@
     <section class="mb-4">
       <h4 class="text-info mb-3"><i class="bi bi-activity me-2"></i> Score Trends</h4>
       <div class="chart-container">
-        <canvas id="scoreChart"></canvas>
+        <canvas id="scoreChart" height="200"></canvas>
       </div>
     </section>
 
     <section class="mb-4">
       <h4 class="text-info mb-3"><i class="bi bi-sliders me-2"></i> Accuracy by Difficulty</h4>
       <div class="chart-container">
-        <canvas id="difficultyChart"></canvas>
+        <canvas id="difficultyChart" height="200"></canvas>
       </div>
     </section>
 
     <section class="mb-4">
       <h4 class="text-info mb-3"><i class="bi bi-pie-chart-fill me-2"></i> Pass vs Fail</h4>
       <div class="chart-container">
-        <canvas id="passFailChart"></canvas>
+        <canvas id="passFailChart" height="200"></canvas>
       </div>
     </section>
 

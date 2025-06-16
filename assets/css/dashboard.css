@@ -89,14 +89,29 @@ body {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   border: 2px solid rgba(0, 217, 255, 0.4);
+  position: relative;
+  min-height: 150px;
 }
 
 canvas {
   width: 100% !important;
-  max-height: 300px;
+  height: auto !important;
+  max-height: 220px;
 }
 
-/* Feedback Alert */
+.chart-empty {
+  color: #888;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 2rem 1rem;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
 .alert-feedback {
   background: #212121;
   padding: 0.75rem 1rem;
@@ -108,8 +123,15 @@ canvas {
   font-size: 0.85rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   transition: all 0.3s ease-in-out;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   border-left: 4px solid #00d9ff;
+}
+
+.alert-feedback .alert-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
 }
 
 .alert-feedback.success { background-color: rgba(0, 255, 144, 0.1); color: #00ff90; border-left-color: #00ff90; }
@@ -120,10 +142,12 @@ canvas {
   background: none;
   border: none;
   color: #f5f5f5;
-  font-size: 1.1rem;
-  opacity: 0.8;
+  font-size: 1.25rem;
+  opacity: 0.9;
   padding: 0.25rem;
+  margin-left: 1rem;
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .alert-feedback .btn-close:hover {
@@ -157,6 +181,7 @@ canvas {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  min-height: 150px;
 }
 
 .recent-list .quiz-line {
@@ -177,6 +202,7 @@ canvas {
   flex-direction: column;
   gap: 0.75rem;
   padding: 0.25rem 0.5rem;
+  min-height: 150px;
 }
 
 .progress-item {
