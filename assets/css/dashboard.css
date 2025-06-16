@@ -88,7 +88,6 @@ body {
   padding: 1rem;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  border: 2px solid rgba(0, 217, 255, 0.4);
   position: relative;
   min-height: 150px;
 }
@@ -134,20 +133,38 @@ canvas {
   flex: 1;
 }
 
-.alert-feedback.success { background-color: rgba(0, 255, 144, 0.1); color: #00ff90; border-left-color: #00ff90; }
-.alert-feedback.warning { background-color: rgba(255, 193, 7, 0.1); color: #ffc107; border-left-color: #ffc107; }
-.alert-feedback.danger { background-color: rgba(255, 99, 132, 0.1); color: #ff6b6b; border-left-color: #ff6b6b; }
+.alert-feedback.success {
+  background-color: rgba(0, 255, 144, 0.1);
+  color: #00ff90;
+  border-left-color: #00ff90;
+}
+.alert-feedback.warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+  border-left-color: #ffc107;
+}
+.alert-feedback.danger {
+  background-color: rgba(255, 99, 132, 0.1);
+  color: #ff6b6b;
+  border-left-color: #ff6b6b;
+}
+
+.alert-feedback.success .btn-close i { color: #00cc77; }
+.alert-feedback.warning .btn-close i { color: #e6a800; }
+.alert-feedback.danger .btn-close i { color: #cc4444; }
 
 .alert-feedback .btn-close {
   background: none;
   border: none;
-  color: #f5f5f5;
   font-size: 1.25rem;
   opacity: 0.9;
   padding: 0.25rem;
   margin-left: 1rem;
   line-height: 1;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .alert-feedback .btn-close:hover {
@@ -182,6 +199,7 @@ canvas {
   flex-direction: column;
   gap: 0.75rem;
   min-height: 150px;
+  position: relative;
 }
 
 .recent-list .quiz-line {
@@ -203,6 +221,7 @@ canvas {
   gap: 0.75rem;
   padding: 0.25rem 0.5rem;
   min-height: 150px;
+  position: relative;
 }
 
 .progress-item {

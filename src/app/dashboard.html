@@ -2,17 +2,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QuizBreaker | Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/dashboard.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <main class="container dashboard-container">
+  <main class="container-fluid">
     <div class="header">
       <div class="user-info" id="userInfo">
         <div class="avatar" id="userAvatar"></div>
@@ -22,7 +22,7 @@
         </div>
       </div>
       <a class="footer-btn" style="width:auto; padding:0.4rem 0.8rem;" id="backBtn" title="Back to Game">
-        <i class="bi bi-arrow-left"></i>
+        <i class="bi bi-columns-gap py-1"></i>
       </a>
     </div>
 
@@ -31,12 +31,11 @@
     <section id="feedbackAlert" class="alert-feedback d-none">
       <div class="alert-content">
         <span id="feedbackMessage">Feedback message...</span>
-        <button class="btn-close" aria-label="Close">
-          <i class="bi bi-x-lg"></i>
-        </button>
+        <button class="btn-close" aria-label="Close"><i class="bi bi-x-lg"></i></button>
       </div>
     </section>
 
+    <!-- Stats Cards -->
     <section class="row g-3 mb-4">
       <div class="col-6 col-md-3">
         <div class="card stat-card border-info text-center">
@@ -68,6 +67,7 @@
       </div>
     </section>
 
+    <!-- Streaks and Highlights -->
     <section class="row g-3 mb-4">
       <div class="col-6 col-md-6">
         <div class="card stat-card border-secondary text-center">
@@ -85,6 +85,7 @@
       </div>
     </section>
 
+    <!-- Charts -->
     <section class="mb-4">
       <h4 class="text-info mb-3"><i class="bi bi-activity me-2"></i> Score Trends</h4>
       <div class="chart-container">
@@ -100,7 +101,7 @@
     </section>
 
     <section class="mb-4">
-      <h4 class="text-info mb-3"><i class="bi bi-pie-chart-fill me-2"></i> Pass vs Fail</h4>
+      <h4 class="text-info mb-3"><i class="bi bi-pie-chart-fill me-2"></i> Pass/Fail</h4>
       <div class="chart-container">
         <canvas id="passFailChart" height="200"></canvas>
       </div>
@@ -112,7 +113,7 @@
     </section>
 
     <section class="mb-4">
-      <h4 class="text-info mb-3"><i class="bi bi-list-ul me-2"></i> Last 5 Quizzes</h4>
+      <h4 class="text-info mb-3"><i class="bi bi-list-ul me-2"></i> Recent Quizzes</h4>
       <div class="recent-list" id="recentSummary"></div>
     </section>
   </main>

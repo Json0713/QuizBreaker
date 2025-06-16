@@ -41,11 +41,9 @@ function formatTime(s) {
 
 function showNoData(containerId) {
   const container = document.getElementById(containerId);
-  if (container.tagName === 'CANVAS') {
-    container.parentElement.innerHTML = '<div class="chart-empty">No data available yet</div>';
-  } else {
-    container.innerHTML = '<div class="chart-empty">No data available yet</div>';
-  }
+  if (!container) return;
+  const parent = container.tagName === 'CANVAS' ? container.parentElement : container;
+  parent.innerHTML = '<div class="chart-empty">No data available yet</div>';
 }
 
 function renderScoreChart(data) {
@@ -82,7 +80,7 @@ function renderCategoryAccuracyBars(data) {
   const container = document.getElementById("categoryAccuracyBars");
   container.innerHTML = "";
   const entries = Object.entries(categories);
-  if (!entries.length) return container.innerHTML = '<div class="chart-empty">No data available yet</div>';
+  if (!entries.length) return showNoData("categoryAccuracyBars");
   
   entries.forEach(([cat, val], i) => {
     const acc = Math.round((val.correct / val.total) * 100);
@@ -113,17 +111,18 @@ function renderPassFailChart(data) {
   const pass = data.filter(d => d.passed).length;
   const fail = data.length - pass;
   new Chart(document.getElementById("passFailChart"), {
-    type: "doughnut",
+    type: "pie",
     data: {
       labels: ["Passed", "Failed"],
       datasets: [{
         data: [pass, fail],
-        backgroundColor: ["#00d9ff", "rgba(180, 180, 180, 0.3)"]
+        backgroundColor: ["rgba(0, 217, 255, 0.6)", "rgba(180, 180, 180, 0.3)"]
       }]
     },
     options: {
       plugins: { legend: { position: 'bottom' } },
-      responsive: true
+      responsive: true,
+      cutout: '60%'
     }
   });
 }
@@ -167,7 +166,7 @@ function renderStreakData(data) {
 
 function renderRecentList(data) {
   const list = document.getElementById("recentSummary");
-  if (!data.length) return list.innerHTML = '<div class="chart-empty">No recent quizzes taken yet</div>';
+  if (!data.length) return showNoData("recentSummary");
   const latest = data.slice(0, 5);
   list.innerHTML = latest.map(q => `
     <div class="quiz-line ${q.passed ? 'passed' : 'failed'}">
