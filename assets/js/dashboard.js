@@ -93,7 +93,7 @@ function generateSmartFeedback(data) {
   setInterval(() => {
     index = (index + 1) % feedbacks.length;
     msg.innerHTML = feedbacks[index];
-  }, 3000);
+  }, 8000);
 }
 
 function renderScoreChart(data) {
