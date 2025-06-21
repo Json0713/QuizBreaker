@@ -188,7 +188,7 @@ function showToast(msg) {
   toast.classList.remove("hidden");
   setTimeout(() => {
     toast.classList.remove("show");
-  }, 5000);
+  }, 7000);
 }
 
 function renderRadarChart(username) {

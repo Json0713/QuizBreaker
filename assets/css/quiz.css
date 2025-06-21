@@ -213,7 +213,7 @@ button:focus {
   }
 
   .btn-group {
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.75rem;
   }
 
