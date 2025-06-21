@@ -1,4 +1,4 @@
-// /assets/js/game.js — Optimized with Radar Chart and Toast for Quiz Completion
+// /assets/js/game.js — Final Patch with Enhanced Toast and Persistent Radar Chart
 
 let pendingDeleteIndex = null;
 let pendingUser = null;
@@ -25,10 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
   renderRecent(user.name);
   initEventListeners(user.name);
 
-  // Check if user just finished a quiz
+  // Always try rendering radar chart if data exists
+  renderRadarChart(user.name);
+
+  // Toast only after fresh quiz completion
   if (localStorage.getItem("justCompletedQuiz") === "true") {
-    showToast("✅ Quiz completed! Compare your performance below.");
-    renderRadarChart(user.name);
+    showToast("<i class='bi bi-check-circle-fill'></i> Quiz completed! Compare your performance below.");
     localStorage.removeItem("justCompletedQuiz");
   }
 });
@@ -182,7 +184,7 @@ function confirmDelete() {
 
 function showToast(msg) {
   const toast = document.getElementById("toast");
-  toast.textContent = msg;
+  toast.innerHTML = msg;
   toast.classList.add("show");
   toast.classList.remove("hidden");
   setTimeout(() => {
@@ -197,7 +199,6 @@ function renderRadarChart(username) {
 
   const [latest, previous] = userQuizzes;
   const ctx = document.getElementById("radarChart").getContext("2d");
-  document.getElementById("overviewCard").style.display = "block";
 
   const datasetLabels = ["Latest Quiz", "Previous Quiz"];
 

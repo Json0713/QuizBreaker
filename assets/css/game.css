@@ -304,15 +304,20 @@ input:focus {
 
 .toast {
   position: fixed;
-  top: 1rem;
+  top: 1.25rem;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--neutral);
-  color: var(--text-light);
-  padding: 0.75rem 1.5rem;
+  background: var(--card-bg);
+  color: var(--success);
+  border-left: 4px solid var(--success);
+  box-shadow: 0 0 12px rgba(0, 255, 144, 0.2);
+  padding: 0.75rem 1.25rem;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
   z-index: 2000;
+  font-weight: 600;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease, transform 0.3s ease;
@@ -321,6 +326,11 @@ input:focus {
 .toast.show {
   opacity: 1;
   pointer-events: auto;
+}
+
+.toast i {
+  font-size: 1.2rem;
+  color: var(--success);
 }
 
 #overviewCard {
