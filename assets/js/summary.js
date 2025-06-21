@@ -68,5 +68,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSkeleton();
   setTimeout(() => {
     renderSummary();
-  }, 1000);
+  }, 2000);
 });

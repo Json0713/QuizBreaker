@@ -26,24 +26,12 @@
         </div>
       </div>
       <button class="btn icon-btn clickable" id="logoutBtn" title="Logout">
-        <i class="bi bi-box-arrow-right"></i>
+        <i class="bi bi-columns-gap py-1"></i>
       </button>
     </header>
 
     <main class="main-wrapper">
       <div id="toast" class="toast hidden" role="alert" aria-live="polite" aria-atomic="true"></div>
-
-      <section class="card" id="overviewCard">
-        <div class="card-header">
-          <h2><i class="bi bi-graph-up"></i> Quiz Performance Overview</h2>
-        </div>
-        <div id="radarWrapper">
-          <div id="radarFallback" class="alert alert-warning" style="display: none">
-            <i class="bi bi-info-circle-fill"></i> Complete at least 2 quizzes to see your performance comparison.
-          </div>
-          <canvas id="radarChart" aria-label="Radar chart of recent quiz performance" style="display: none"></canvas>
-        </div>
-      </section>
 
       <section class="card">
         <h2><i class="bi bi-list-task"></i> Select Category</h2>
@@ -60,19 +48,30 @@
           <i class="bi bi-play-circle"></i> Start Quiz
         </button>
       </div>
+      
+      <section class="card dashboard-card">
+        <button onclick="location.href='dashboard.html'" class="link-btn" aria-label="Go to Dashboard">
+          <h2><i class="bi bi-bar-chart"></i> View Quiz Dashboard</h2>
+        </button>
+      </section>
+      
+      <section class="card" id="overviewCard">
+        <div class="card-header">
+          <h2><i class="bi bi-graph-up"></i> Quiz Performance Overview</h2>
+        </div>
+        <div id="radarWrapper">
+          <div id="radarFallback" class="alert alert-warning" style="display: none">
+            <i class="bi bi-info-circle-fill"></i> Complete at least 2 quizzes to see your performance comparison.
+          </div>
+          <canvas id="radarChart" aria-label="Radar chart of recent quiz performance" style="display: none"></canvas>
+        </div>
+      </section>
 
       <section class="card">
         <div class="card-header">
           <h2><i class="bi bi-clock-history"></i> Recent Quizzes</h2>
         </div>
         <ul id="recentQuizzes" class="recent-list scrollable" aria-label="Recent Quiz List"></ul>
-      </section>
-
-      <section class="card dashboard-card">
-        <button onclick="location.href='dashboard.html'" class="link-btn" aria-label="Go to Dashboard">
-          <h2><i class="bi bi-bar-chart"></i> View Quiz Dashboard</h2>
-          <p class="meta">Track your progress and performance history</p>
-        </button>
       </section>
 
       <div class="action-wrapper">

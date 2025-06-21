@@ -1,6 +1,6 @@
 // /assets/js/dashboard.js
 
-const DEFAULT_CATEGORIES = ["IT", "CS", "IS"];
+const DEFAULT_CATEGORIES = ["ICT", "Science", "History"];
 
 let charts = [];
 

@@ -1,53 +1,443 @@
 {
   "Easy": [
-    { "question": "What does 'IS' stand for in tech?", "options": ["Internet Systems", "Information Systems", "Interface Software", "Input Structure"], "answer": "Information Systems", "type": "mcq" },
-    { "question": "Puzzle: The more you take, the more you leave behind. What is it?", "hint": "Related to walking.", "answer": "footsteps", "type": "puzzle" },
-    { "question": "Which tool is used to analyze organizational systems?", "options": ["UML", "UI", "USB", "HTML"], "answer": "UML", "type": "mcq" },
-    { "question": "How many KB are there in 1 MB?", "answer": "1024", "type": "calculator" },
-    { "question": "SQL: Get all rows from 'employees'", "answer": "SELECT * FROM employees;", "type": "sql" },
-    { "question": "Puzzle: What has a heart that doesn't beat?", "hint": "Think nature.", "answer": "artichoke", "type": "puzzle" },
-    { "question": "Which diagram models data flows?", "options": ["DFD", "ERD", "Gantt", "PERT"], "answer": "DFD", "type": "mcq" },
-    { "question": "Calculate 5 * 8", "answer": "40", "type": "calculator" },
-    { "question": "Puzzle: What can fill a room but takes no space?", "hint": "It's everywhere.", "answer": "light", "type": "puzzle" },
-    { "question": "Terminal: clear command screen", "answer": "clear", "type": "terminal" },
-    { "question": "Common backend database for IS", "options": ["MongoDB", "MySQL", "Redis", "Neo4j"], "answer": "MySQL", "type": "mcq" },
-    { "question": "Puzzle: What gets wetter the more it dries?", "hint": "Used after a bath.", "answer": "towel", "type": "puzzle" },
-    { "question": "How many bytes in 4 kilobytes?", "answer": "4096", "type": "calculator" },
-    { "question": "SQL to count records in a table", "answer": "SELECT COUNT(*) FROM table;", "type": "sql" },
-    { "question": "Puzzle: What runs but never walks?", "hint": "Think of water.", "answer": "river", "type": "puzzle" }
+    {
+      "question": "Who was the first President of the Philippines?",
+      "options": [
+        "Jose Rizal",
+        "Andres Bonifacio",
+        "Manuel L. Quezon",
+        "Emilio Aguinaldo"
+      ],
+      "answer": "Emilio Aguinaldo",
+      "type": "mcq"
+    },
+    {
+      "question": "What is celebrated on June 12 in the Philippines?",
+      "options": [
+        "Bonifacio Day",
+        "Independence Day",
+        "National Heroes Day",
+        "Rizal Day"
+      ],
+      "answer": "Independence Day",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: I mark events and years, and hang on a wall. What am I?",
+      "hint": "Used to track days.",
+      "answer": "calendar",
+      "type": "puzzle"
+    },
+    {
+      "question": "Which Filipino hero wrote 'Noli Me Tangere'?",
+      "options": [
+        "Andres Bonifacio",
+        "Emilio Aguinaldo",
+        "Jose Rizal",
+        "Marcelo H. del Pilar"
+      ],
+      "answer": "Jose Rizal",
+      "type": "mcq"
+    },
+    {
+      "question": "Where did the Cry of Pugad Lawin happen?",
+      "options": [
+        "Cavite",
+        "Manila",
+        "Quezon City",
+        "Caloocan"
+      ],
+      "answer": "Caloocan",
+      "type": "mcq"
+    },
+    {
+      "question": "Which country colonized the Philippines for over 300 years?",
+      "options": [
+        "Japan",
+        "USA",
+        "Spain",
+        "China"
+      ],
+      "answer": "Spain",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: I keep the past alive in pages and facts. What am I?",
+      "hint": "Subject of this quiz.",
+      "answer": "history",
+      "type": "puzzle"
+    },
+    {
+      "question": "What is the national hero of the Philippines?",
+      "options": [
+        "Lapu-Lapu",
+        "Jose Rizal",
+        "Manuel Roxas",
+        "Antonio Luna"
+      ],
+      "answer": "Jose Rizal",
+      "type": "mcq"
+    },
+    {
+      "question": "What city is known as the 'Walled City'?",
+      "options": [
+        "Cebu",
+        "Vigan",
+        "Manila",
+        "Intramuros"
+      ],
+      "answer": "Intramuros",
+      "type": "mcq"
+    },
+    {
+      "question": "When did World War II end?",
+      "options": [
+        "1942",
+        "1945",
+        "1946",
+        "1939"
+      ],
+      "answer": "1945",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: I'm a record of rulers, wars, and peace. What am I?",
+      "hint": "Related to timelines.",
+      "answer": "chronicle",
+      "type": "puzzle"
+    },
+    {
+      "question": "Which country helped liberate the Philippines in WWII?",
+      "options": [
+        "Spain",
+        "China",
+        "USA",
+        "Japan"
+      ],
+      "answer": "USA",
+      "type": "mcq"
+    },
+    {
+      "question": "Who was known as the 'Brains of the Revolution'?",
+      "options": [
+        "Jose Rizal",
+        "Marcelo H. del Pilar",
+        "Apolinario Mabini",
+        "Emilio Jacinto"
+      ],
+      "answer": "Apolinario Mabini",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: I divide time into BC and AD. What am I?",
+      "hint": "Used in history.",
+      "answer": "timeline",
+      "type": "puzzle"
+    },
+    {
+      "question": "What was the name of the group founded by Andres Bonifacio?",
+      "options": [
+        "La Liga Filipina",
+        "Katipunan",
+        "Malolos Congress",
+        "Reform Society"
+      ],
+      "answer": "Katipunan",
+      "type": "mcq"
+    },
+    {
+      "question": "Who was the first female president of the Philippines?",
+      "options": [
+        "Leni Robredo",
+        "Corazon Aquino",
+        "Gloria Arroyo",
+        "Imelda Marcos"
+      ],
+      "answer": "Corazon Aquino",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: I record what happened, and teach what to learn. What am I?",
+      "hint": "Field of study.",
+      "answer": "history",
+      "type": "puzzle"
+    },
+    {
+      "question": "What revolution ended Spanish rule in the Philippines?",
+      "options": [
+        "People Power",
+        "EDSA Revolution",
+        "Philippine Revolution",
+        "Civil War"
+      ],
+      "answer": "Philippine Revolution",
+      "type": "mcq"
+    },
+    {
+      "question": "What is the former name of the Philippines under Spain?",
+      "options": [
+        "Islas Filipinas",
+        "Las Islas del Sol",
+        "Manila Islands",
+        "Malaya"
+      ],
+      "answer": "Islas Filipinas",
+      "type": "mcq"
+    },
+    {
+      "question": "Where was Jose Rizal executed?",
+      "options": [
+        "Malacanang",
+        "Fort Santiago",
+        "Luneta",
+        "Caloocan"
+      ],
+      "answer": "Luneta",
+      "type": "mcq"
+    }
   ],
   "Medium": [
-    { "question": "What is the main goal of IS?", "options": ["Data storage", "Information delivery", "Program execution", "Code compilation"], "answer": "Information delivery", "type": "mcq" },
-    { "question": "Puzzle: What can’t talk but replies when spoken to?", "hint": "Think of sound reflection.", "answer": "echo", "type": "puzzle" },
-    { "question": "Which of these is a CRM system?", "options": ["SAP", "Salesforce", "Photoshop", "Visual Studio"], "answer": "Salesforce", "type": "mcq" },
-    { "question": "Output of: len('IS2023')", "answer": "6", "type": "calculator" },
-    { "question": "SQL to get emails from 'users' where verified=1", "answer": "SELECT email FROM users WHERE verified=1;", "type": "sql" },
-    { "question": "Puzzle: What has many teeth but can’t bite?", "hint": "Everyday object.", "answer": "comb", "type": "puzzle" },
-    { "question": "Terminal: show disk usage", "answer": "df -h", "type": "terminal" },
-    { "question": "Code: Write Python function to square a number", "answer": "def square(n): return n*n", "type": "code" },
-    { "question": "Puzzle: What has an eye but cannot see?", "hint": "Common tool.", "answer": "needle", "type": "puzzle" },
-    { "question": "Which is a type of IS model?", "options": ["Waterfall", "Spiral", "SDLC", "MIS"], "answer": "MIS", "type": "mcq" },
-    { "question": "Calculate 2 + 2 * 2", "answer": "6", "type": "calculator" },
-    { "question": "SQL to delete rows with null email", "answer": "DELETE FROM users WHERE email IS NULL;", "type": "sql" },
-    { "question": "Terminal: see running processes", "answer": "top", "type": "terminal" },
-    { "question": "Puzzle: I shave every day, but my beard stays the same. Who am I?", "hint": "Barbers do this.", "answer": "barber", "type": "puzzle" },
-    { "question": "Python: get length of a list 'a'", "answer": "len(a)", "type": "code" }
+    {
+        "question": "Who was the first president of the Commonwealth of the Philippines?",
+        "options": ["Emilio Aguinaldo", "Manuel L. Quezon", "Jose P. Laurel", "Sergio Osmeña"],
+        "answer": "Manuel L. Quezon",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I record daily happenings, sometimes secret. What am I?",
+        "hint": "Often written by hand.",
+        "answer": "diary",
+        "type": "puzzle"
+    },
+    {
+        "question": "Which treaty ended the Spanish-American War?",
+        "options": ["Treaty of Paris", "Treaty of Tordesillas", "Treaty of Versailles", "Treaty of Manila"],
+        "answer": "Treaty of Paris",
+        "type": "mcq"
+    },
+    {
+        "question": "Who led the People Power Revolution in 1986?",
+        "options": ["Ferdinand Marcos", "Corazon Aquino", "Gloria Arroyo", "Ramon Magsaysay"],
+        "answer": "Corazon Aquino",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I hold memories, black and white or colored. What am I?",
+        "hint": "Visual medium.",
+        "answer": "photo",
+        "type": "puzzle"
+    },
+    {
+        "question": "What movement aimed to reform the Spanish rule in the Philippines?",
+        "options": ["Propaganda Movement", "Katipunan", "Malolos Republic", "EDSA"],
+        "answer": "Propaganda Movement",
+        "type": "mcq"
+    },
+    {
+        "question": "What year did the Philippines gain independence from the United States?",
+        "options": ["1935", "1945", "1946", "1951"],
+        "answer": "1946",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: My hands move, but I have no arms. What am I?",
+        "hint": "Tells time.",
+        "answer": "clock",
+        "type": "puzzle"
+    },
+    {
+        "question": "What was the capital of the Philippines during Japanese occupation?",
+        "options": ["Quezon City", "Manila", "Davao", "Baguio"],
+        "answer": "Manila",
+        "type": "mcq"
+    },
+    {
+        "question": "Who is considered the 'Father of the Philippine Army'?",
+        "options": ["Emilio Aguinaldo", "Antonio Luna", "Gregorio del Pilar", "Macario Sakay"],
+        "answer": "Antonio Luna",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I show borders and places, but I’m not the world.",
+        "hint": "Seen in geography books.",
+        "answer": "map",
+        "type": "puzzle"
+    },
+    {
+        "question": "What was the name of the constitution ratified in 1899?",
+        "options": ["1935 Constitution", "Malolos Constitution", "1987 Constitution", "Biak-na-Bato Constitution"],
+        "answer": "Malolos Constitution",
+        "type": "mcq"
+    },
+    {
+        "question": "Who became president after Manuel L. Quezon died?",
+        "options": ["Sergio Osmeña", "Jose Laurel", "Elpidio Quirino", "Ramon Magsaysay"],
+        "answer": "Sergio Osmeña",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I stand tall and honor the brave. What am I?",
+        "hint": "Seen in parks or cities.",
+        "answer": "monument",
+        "type": "puzzle"
+    },
+    {
+        "question": "Which war resulted in Philippine independence from Spain?",
+        "options": ["Philippine-American War", "Revolutionary War", "Philippine Revolution", "Spanish-American War"],
+        "answer": "Philippine Revolution",
+        "type": "mcq"
+    },
+    {
+        "question": "What was the purpose of the La Liga Filipina?",
+        "options": ["Wage war", "Form a republic", "Reform movement", "Start a coup"],
+        "answer": "Reform movement",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I am a written or spoken account of events. What am I?",
+        "hint": "Often in books or lessons.",
+        "answer": "narrative",
+        "type": "puzzle"
+    },
+    {
+        "question": "What major global event happened in 1914–1918?",
+        "options": ["World War II", "Cold War", "World War I", "Vietnam War"],
+        "answer": "World War I",
+        "type": "mcq"
+    },
+    {
+        "question": "Who was the first Speaker of the Philippine Assembly?",
+        "options": ["Manuel L. Quezon", "Sergio Osmeña", "Roxas", "Recto"],
+        "answer": "Sergio Osmeña",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I'm a place full of knowledge and old stories. What am I?",
+        "hint": "Quiet, with books.",
+        "answer": "library",
+        "type": "puzzle"
+    }
   ],
   "Hard": [
-    { "question": "Puzzle: What disappears when you say its name?", "hint": "Quiet please.", "answer": "silence", "type": "puzzle" },
-    { "question": "Terminal: check network interface info", "answer": "ifconfig", "type": "terminal" },
-    { "question": "Convert binary 1101 to decimal", "answer": "13", "type": "calculator" },
-    { "question": "Python: check prime", "answer": "def is_prime(n): return all(n%i for i in range(2,n))", "type": "code" },
-    { "question": "SQL to get users registered after 2023", "answer": "SELECT * FROM users WHERE year > 2023;", "type": "sql" },
-    { "question": "Puzzle: What comes once in a minute, twice in a moment, never in a thousand years?", "hint": "Think letters.", "answer": "m", "type": "puzzle" },
-    { "question": "What DBMS means?", "options": ["Database Manager Software", "Database Management System", "Data Business Model Software", "Data Broker Modeling System"], "answer": "Database Management System", "type": "mcq" },
-    { "question": "SQL to change column name in table", "answer": "ALTER TABLE users RENAME COLUMN old TO new;", "type": "sql" },
-    { "question": "Puzzle: What invention lets you look right through a wall?", "hint": "Not X-ray.", "answer": "window", "type": "puzzle" },
-    { "question": "How many MB in 2GB?", "answer": "2048", "type": "calculator" },
-    { "question": "Terminal: show current directory", "answer": "pwd", "type": "terminal" },
-    { "question": "Python: reverse string", "answer": "def rev(s): return s[::-1]", "type": "code" },
-    { "question": "Puzzle: What can’t be used until it’s broken?", "hint": "You eat it.", "answer": "egg", "type": "puzzle" },
-    { "question": "Calculate 256 / 4", "answer": "64", "type": "calculator" },
-    { "question": "Puzzle: What’s full of holes but still holds water?", "hint": "Kitchen item.", "answer": "sponge", "type": "puzzle" }
+    {
+        "question": "Who wrote 'La Solidaridad'?",
+        "options": ["Jose Rizal", "Graciano Lopez Jaena", "Marcelo H. del Pilar", "Antonio Luna"],
+        "answer": "Graciano Lopez Jaena",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I guard old secrets under glass and lights. What am I?",
+        "hint": "Found in cities.",
+        "answer": "museum",
+        "type": "puzzle"
+    },
+    {
+        "question": "Which general died in the Battle of Tirad Pass?",
+        "options": ["Antonio Luna", "Emilio Aguinaldo", "Gregorio del Pilar", "Macario Sakay"],
+        "answer": "Gregorio del Pilar",
+        "type": "mcq"
+    },
+    {
+        "question": "What is the significance of the Pact of Biak-na-Bato?",
+        "options": ["End of Spanish rule", "Peace between Spain and revolutionaries", "American invasion", "Rizal's return"],
+        "answer": "Peace between Spain and revolutionaries",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: My walls whisper the past. What am I?",
+        "hint": "Visit for heritage.",
+        "answer": "ruins",
+        "type": "puzzle"
+    },
+    {
+        "question": "What title did Jose Rizal receive from Spanish authorities?",
+        "options": ["Doctor", "Traitor", "Enemy of the State", "Subversive"],
+        "answer": "Subversive",
+        "type": "mcq"
+    },
+    {
+        "question": "What was the real name of Macario Sakay's republic?",
+        "options": ["Katagalugan", "Malolos", "New Philippines", "Revolution Republic"],
+        "answer": "Katagalugan",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I capture faces for history. What am I?",
+        "hint": "Click!",
+        "answer": "camera",
+        "type": "puzzle"
+    },
+    {
+        "question": "Where was the Constitution of Biak-na-Bato signed?",
+        "options": ["Cavite", "Pampanga", "Bulacan", "Manila"],
+        "answer": "Bulacan",
+        "type": "mcq"
+    },
+    {
+        "question": "What ship brought Gen. Douglas MacArthur back to Leyte?",
+        "options": ["USS Missouri", "USS Arizona", "USS PT-41", "USS Boise"],
+        "answer": "USS PT-41",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I’m worn in battle, not clothes. What am I?",
+        "hint": "Protects soldiers.",
+        "answer": "armor",
+        "type": "puzzle"
+    },
+    {
+        "question": "Who was the last Spanish Governor-General of the Philippines?",
+        "options": ["Ramon Blanco", "Diego de los Rios", "Polavieja", "Carlos María de la Torre"],
+        "answer": "Diego de los Rios",
+        "type": "mcq"
+    },
+    {
+        "question": "What secret organization led to the 1896 revolution?",
+        "options": ["La Liga Filipina", "Propaganda", "Katipunan", "Reform Society"],
+        "answer": "Katipunan",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I'm a report of events from the past. What am I?",
+        "hint": "On paper or TV.",
+        "answer": "news",
+        "type": "puzzle"
+    },
+    {
+        "question": "Which Philippine president declared Martial Law in 1972?",
+        "options": ["Corazon Aquino", "Ferdinand Marcos", "Jose Laurel", "Gloria Arroyo"],
+        "answer": "Ferdinand Marcos",
+        "type": "mcq"
+    },
+    {
+        "question": "Which Filipino hero was exiled to Dapitan?",
+        "options": ["Andres Bonifacio", "Jose Rizal", "Emilio Aguinaldo", "Juan Luna"],
+        "answer": "Jose Rizal",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I’m in the past but shape the present. What am I?",
+        "hint": "This subject.",
+        "answer": "history",
+        "type": "puzzle"
+    },
+    {
+        "question": "What constitution was enacted under Japanese occupation?",
+        "options": ["1935", "1943", "1973", "1987"],
+        "answer": "1943",
+        "type": "mcq"
+    },
+    {
+        "question": "Which Filipino painter was also a revolutionary?",
+        "options": ["Fernando Amorsolo", "Juan Luna", "Carlos Francisco", "Botong Francisco"],
+        "answer": "Juan Luna",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I come before you, always behind. What am I?",
+        "hint": "Not future.",
+        "answer": "past",
+        "type": "puzzle"
+    }
   ]
 }
