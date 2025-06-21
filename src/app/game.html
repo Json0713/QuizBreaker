@@ -13,6 +13,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
     <link rel="stylesheet" href="../../assets/css/game.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../../assets/js/game.js" defer></script>
   </head>
   <body>
@@ -30,6 +31,15 @@
     </header>
 
     <main class="main-wrapper">
+      <div id="toast" class="toast hidden"></div>
+
+      <section class="card" id="overviewCard" style="display: none;">
+        <div class="card-header">
+          <h2>📊 Quiz Performance Overview</h2>
+        </div>
+        <canvas id="radarChart" aria-label="Radar chart of recent quiz performance"></canvas>
+      </section>
+
       <section class="card">
         <h2>Select Category</h2>
         <div class="options" id="categoryOptions" role="radiogroup"></div>

@@ -1,6 +1,6 @@
-// /assets/js/quiz.js
+// /assets/js/quiz.js — Updated to trigger justCompletedQuiz flag and radar data
 
-let questions = [], answers = [], current = 0, startTime, timerRef, overtime = 0;
+let questions = [], answers = [], current = 0, startTime, timerRef, overtime = 0, latestResult = null;
 
 document.addEventListener("DOMContentLoaded", async () => {
   const config = JSON.parse(localStorage.getItem("quizbreaker_config"));
@@ -151,6 +151,7 @@ function endQuiz() {
   recent.unshift(result);
   localStorage.setItem("quizbreaker_recent", JSON.stringify(recent.slice(0, 20)));
 
+  latestResult = result;
   showSummary(result);
 }
 
@@ -186,8 +187,22 @@ function showSummary(result) {
       `).join('')}
       <div class="btn-group">
         <button onclick="location.reload()"><i class="bi bi-arrow-clockwise"></i> Retake</button>
-        <button onclick="location.href='game.html'"><i class="bi bi-arrow-left"></i> Back</button>
+        <button onclick="exitToGamePage()"><i class="bi bi-arrow-left"></i> Back</button>
       </div>
     </div>
   `;
+}
+
+function exitToGamePage() {
+  if (latestResult) {
+    localStorage.setItem("justCompletedQuiz", "true");
+    localStorage.setItem("quizbreaker_latestMeta", JSON.stringify({
+      score: latestResult.score,
+      total: latestResult.total,
+      time: latestResult.time,
+      category: latestResult.category,
+      difficulty: latestResult.difficulty
+    }));
+  }
+  location.href = 'game.html';
 }

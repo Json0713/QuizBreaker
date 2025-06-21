@@ -1,4 +1,4 @@
-// game.js — Optimized Version with Scrollable Quiz List and Clean Logic
+// /assets/js/game.js — Optimized with Radar Chart and Toast for Quiz Completion
 
 let pendingDeleteIndex = null;
 let pendingUser = null;
@@ -24,6 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
   renderOptions("difficultyOptions", difficulties, "difficulty");
   renderRecent(user.name);
   initEventListeners(user.name);
+
+  // Check if user just finished a quiz
+  if (localStorage.getItem("justCompletedQuiz") === "true") {
+    showToast("✅ Quiz completed! Compare your performance below.");
+    renderRadarChart(user.name);
+    localStorage.removeItem("justCompletedQuiz");
+  }
 });
 
 function getUser() {
@@ -49,11 +56,11 @@ function renderOptions(containerId, items, groupName) {
   const container = document.getElementById(containerId);
   container.innerHTML = "";
 
-  items.forEach((item, index) => {
+  items.forEach(item => {
     const label = document.createElement("label");
     label.className = "option";
     label.innerHTML = `
-      <input type="radio" name="${groupName}" value="${item.id}" ${index === 0 ? 'autofocus' : ''}>
+      <input type="radio" name="${groupName}" value="${item.id}">
       <span>${item.label} <small>${item.desc}</small></span>
     `;
     container.appendChild(label);
@@ -171,4 +178,98 @@ function confirmDelete() {
 
   renderRecent(pendingUser);
   document.getElementById("deleteModal").style.display = "none";
+}
+
+function showToast(msg) {
+  const toast = document.getElementById("toast");
+  toast.textContent = msg;
+  toast.classList.add("show");
+  toast.classList.remove("hidden");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 5000);
+}
+
+function renderRadarChart(username) {
+  const all = JSON.parse(localStorage.getItem("quizbreaker_recent")) || [];
+  const userQuizzes = all.filter(q => q.user === username);
+  if (userQuizzes.length < 2) return;
+
+  const [latest, previous] = userQuizzes;
+  const ctx = document.getElementById("radarChart").getContext("2d");
+  document.getElementById("overviewCard").style.display = "block";
+
+  const datasetLabels = ["Latest Quiz", "Previous Quiz"];
+
+  const toRadar = (quiz) => {
+    const accuracy = quiz.score / quiz.total * 100;
+    const timeScore = Math.max(0, 100 - quiz.time); // inverse of time used
+    const difficulty = { Easy: 1, Medium: 2, Hard: 3 }[quiz.difficulty] * 33.3;
+    const precision = getPrecisionStreak(quiz);
+    return [accuracy, timeScore, difficulty, precision];
+  };
+
+  const data = {
+    labels: ["Accuracy %", "Speed Score", "Difficulty Level", "Precision %"],
+    datasets: [
+      {
+        label: datasetLabels[0],
+        data: toRadar(latest),
+        backgroundColor: "rgba(0, 217, 255, 0.2)",
+        borderColor: "#00d9ff",
+        borderWidth: 2
+      },
+      {
+        label: datasetLabels[1],
+        data: toRadar(previous),
+        backgroundColor: "rgba(255, 100, 100, 0.2)",
+        borderColor: "#ff5c5c",
+        borderWidth: 2
+      }
+    ]
+  };
+
+  new Chart(ctx, {
+    type: "radar",
+    data,
+    options: {
+      responsive: true,
+      scales: {
+        r: {
+          beginAtZero: true,
+          max: 100,
+          ticks: {
+            color: "#ccc"
+          },
+          pointLabels: {
+            color: "#f5f5f5"
+          },
+          grid: {
+            color: "#444"
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: "#f5f5f5"
+          }
+        }
+      }
+    }
+  });
+}
+
+function getPrecisionStreak(quiz) {
+  let correctStreak = 0, maxStreak = 0;
+  for (const q of quiz.details) {
+    const isCorrect = (q.selected || "").trim().toLowerCase() === (q.correct || "").trim().toLowerCase();
+    if (isCorrect) {
+      correctStreak++;
+      if (correctStreak > maxStreak) maxStreak = correctStreak;
+    } else {
+      correctStreak = 0;
+    }
+  }
+  return Math.min(100, (maxStreak / quiz.details.length) * 100);
 }
