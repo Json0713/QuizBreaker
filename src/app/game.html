@@ -35,37 +35,42 @@
 
       <section class="card" id="overviewCard">
         <div class="card-header">
-          <h2>📊 Quiz Performance Overview</h2>
+          <h2><i class="bi bi-graph-up"></i> Quiz Performance Overview</h2>
         </div>
-        <canvas id="radarChart" aria-label="Radar chart of recent quiz performance"></canvas>
+        <div id="radarWrapper">
+          <div id="radarFallback" class="alert alert-warning" style="display: none">
+            <i class="bi bi-info-circle-fill"></i> Complete at least 2 quizzes to see your performance comparison.
+          </div>
+          <canvas id="radarChart" aria-label="Radar chart of recent quiz performance" style="display: none"></canvas>
+        </div>
       </section>
 
       <section class="card">
-        <h2>Select Category</h2>
+        <h2><i class="bi bi-list-task"></i> Select Category</h2>
         <div class="options" id="categoryOptions" role="radiogroup"></div>
       </section>
 
       <section class="card">
-        <h2>Select Difficulty</h2>
+        <h2><i class="bi bi-bar-chart-line"></i> Select Difficulty</h2>
         <div class="options" id="difficultyOptions" role="radiogroup"></div>
       </section>
 
       <div class="action-wrapper">
         <button class="footer-btn" id="startBtn" disabled aria-disabled="true">
-          Start Quiz
+          <i class="bi bi-play-circle"></i> Start Quiz
         </button>
       </div>
 
       <section class="card">
         <div class="card-header">
-          <h2>Recent Quizzes</h2>
+          <h2><i class="bi bi-clock-history"></i> Recent Quizzes</h2>
         </div>
         <ul id="recentQuizzes" class="recent-list scrollable" aria-label="Recent Quiz List"></ul>
       </section>
 
       <section class="card dashboard-card">
         <button onclick="location.href='dashboard.html'" class="link-btn" aria-label="Go to Dashboard">
-          <h2>📊 View Quiz Dashboard</h2>
+          <h2><i class="bi bi-bar-chart"></i> View Quiz Dashboard</h2>
           <p class="meta">Track your progress and performance history</p>
         </button>
       </section>
@@ -76,7 +81,7 @@
           onclick="location.href='advance.html'"
           aria-label="Advanced Quizzes"
         >
-          🧠 Advanced Quizzes
+          <i class="bi bi-lightbulb"></i> Advanced Quizzes
         </button>
       </div>
     </main>

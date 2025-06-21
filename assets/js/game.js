@@ -1,4 +1,4 @@
-// /assets/js/game.js — Final Patch with Enhanced Toast and Persistent Radar Chart
+// /assets/js/game.js — Simplified Final with Fallback Message, Optimized
 
 let pendingDeleteIndex = null;
 let pendingUser = null;
@@ -25,10 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderRecent(user.name);
   initEventListeners(user.name);
 
-  // Always try rendering radar chart if data exists
   renderRadarChart(user.name);
 
-  // Toast only after fresh quiz completion
   if (localStorage.getItem("justCompletedQuiz") === "true") {
     showToast("<i class='bi bi-check-circle-fill'></i> Quiz completed! Compare your performance below.");
     localStorage.removeItem("justCompletedQuiz");
@@ -133,7 +131,7 @@ function renderRecent(username) {
 
   list.innerHTML = "";
   if (userQuizzes.length === 0) {
-    list.innerHTML = '<li style="color:#888; text-align:center; padding:1rem;">📭 No recent quizzes taken yet.</li>';
+    list.innerHTML = '<li style="color:#888; text-align:center; padding:1rem;">No recent quizzes taken yet.</li>';
     return;
   }
 
@@ -179,6 +177,7 @@ function confirmDelete() {
   localStorage.setItem("quizbreaker_recent", JSON.stringify(updated));
 
   renderRecent(pendingUser);
+  renderRadarChart(pendingUser);
   document.getElementById("deleteModal").style.display = "none";
 }
 
@@ -193,46 +192,52 @@ function showToast(msg) {
 }
 
 function renderRadarChart(username) {
+  const fallback = document.getElementById("radarFallback");
+  const canvas = document.getElementById("radarChart");
   const all = JSON.parse(localStorage.getItem("quizbreaker_recent")) || [];
   const userQuizzes = all.filter(q => q.user === username);
-  if (userQuizzes.length < 2) return;
+
+  canvas.style.display = "none";
+  fallback.style.display = "none";
+
+  if (userQuizzes.length < 2) {
+    fallback.style.display = "block";
+    return;
+  }
 
   const [latest, previous] = userQuizzes;
-  const ctx = document.getElementById("radarChart").getContext("2d");
-
-  const datasetLabels = ["Latest Quiz", "Previous Quiz"];
+  const ctx = canvas.getContext("2d");
+  canvas.style.display = "block";
 
   const toRadar = (quiz) => {
     const accuracy = quiz.score / quiz.total * 100;
-    const timeScore = Math.max(0, 100 - quiz.time); // inverse of time used
+    const timeScore = Math.max(0, 100 - quiz.time);
     const difficulty = { Easy: 1, Medium: 2, Hard: 3 }[quiz.difficulty] * 33.3;
     const precision = getPrecisionStreak(quiz);
     return [accuracy, timeScore, difficulty, precision];
   };
 
-  const data = {
-    labels: ["Accuracy %", "Speed Score", "Difficulty Level", "Precision %"],
-    datasets: [
-      {
-        label: datasetLabels[0],
-        data: toRadar(latest),
-        backgroundColor: "rgba(0, 217, 255, 0.2)",
-        borderColor: "#00d9ff",
-        borderWidth: 2
-      },
-      {
-        label: datasetLabels[1],
-        data: toRadar(previous),
-        backgroundColor: "rgba(255, 100, 100, 0.2)",
-        borderColor: "#ff5c5c",
-        borderWidth: 2
-      }
-    ]
-  };
-
   new Chart(ctx, {
     type: "radar",
-    data,
+    data: {
+      labels: ["Accuracy %", "Speed Score", "Difficulty Level", "Precision %"],
+      datasets: [
+        {
+          label: "Latest Quiz",
+          data: toRadar(latest),
+          backgroundColor: "rgba(0, 217, 255, 0.2)",
+          borderColor: "#00d9ff",
+          borderWidth: 2
+        },
+        {
+          label: "Previous Quiz",
+          data: toRadar(previous),
+          backgroundColor: "rgba(255, 100, 100, 0.2)",
+          borderColor: "#ff5c5c",
+          borderWidth: 2
+        }
+      ]
+    },
     options: {
       responsive: true,
       scales: {
