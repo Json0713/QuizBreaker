@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   shuffleArray(questions);
   questions = questions.slice(0, 10);
   answers = Array(questions.length).fill(null);
+
+  document.getElementById("prevBtn").addEventListener("click", prevQuestion);
+  document.getElementById("nextBtn").addEventListener("click", nextQuestion);
   showQuestion();
 });
 
@@ -71,23 +74,22 @@ function showQuestion() {
       <div class='puzzle-box revealed'>
         <div class="hint-content"><strong>Hint:</strong> ${q.hint || "Solve the puzzle."}</div>
       </div>
-      <input type='text' id='puzzleInput' class='form-control' value='${saved}' placeholder='Your answer...' style='width:100%;padding:0.75rem;margin-top:1rem;border-radius:8px;border:none;background:#2a2a2a;color:#f5f5f5;' />
+      <input type='text' id='puzzleInput' value='${saved}' placeholder='Your answer...' />
     `;
   } else if (["calculator", "sql", "terminal", "code"].includes(q.type)) {
     wrapper.innerHTML = `
-      <textarea id='codeInput' class='form-control' placeholder='Enter your answer here...' style='width:100%;min-height:120px;padding:0.75rem;margin-top:1rem;border-radius:8px;border:none;background:#2a2a2a;color:#f5f5f5;font-family:monospace;'>${saved}</textarea>
+      <textarea id='codeInput' placeholder='Enter your answer here...'>${saved}</textarea>
     `;
   } else if (Array.isArray(q.options)) {
     const shuffledOptions = [...q.options];
     shuffleArray(shuffledOptions);
-    shuffledOptions.forEach((opt, i) => {
-      const id = `opt${i}`;
+    shuffledOptions.forEach((opt) => {
       const checked = answers[current] === opt ? "checked" : "";
       wrapper.innerHTML += `
-        <div class="opt-wrapper">
-          <input type="radio" name="answer" id="${id}" value="${opt}" ${checked} />
-          <label for="${id}">${opt}</label>
-        </div>
+        <label class="option">
+          <input type="radio" name="answer" value="${opt}" ${checked} />
+          <span>${opt}</span>
+        </label>
       `;
     });
   }

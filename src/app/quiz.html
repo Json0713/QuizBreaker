@@ -11,25 +11,25 @@
 </head>
 <body>
   <main class="container">
-    <header class="info">
+    <header class="info" aria-label="Quiz metadata">
       <div><strong>Question <span id="qNum">1</span>/10</strong></div>
       <div class="timer" id="timer">Loading...</div>
     </header>
 
-    <div class="progress" aria-label="quiz progress">
+    <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
       <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <section class="question-box">
+    <section class="question-box" aria-labelledby="questionTitle">
       <h2 id="questionTitle">Loading question...</h2>
       <div class="options" id="options"></div>
     </section>
 
     <nav class="btn-group" aria-label="Question navigation">
-      <button onclick="prevQuestion()" aria-label="Previous question">
+      <button id="prevBtn" aria-label="Previous question">
         <i class="bi bi-chevron-left"></i> Previous
       </button>
-      <button onclick="nextQuestion()" aria-label="Next question">
+      <button id="nextBtn" aria-label="Next question">
         Next <i class="bi bi-chevron-right"></i>
       </button>
     </nav>

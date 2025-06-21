@@ -1,12 +1,27 @@
 /* /assets/css/quiz.css */
 
-* { box-sizing: border-box; }
+:root {
+  --bg-dark: #0f0f0f;
+  --text-light: #f5f5f5;
+  --card-bg: #1a1a1a;
+  --neutral: #2a2a2a;
+  --primary: #00d9ff;
+  --primary-hover: #00bcd4;
+  --success: #00ff90;
+  --error: #ff5c5c;
+  --warning: #ffc107;
+  --info: #66d9ef;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #0f0f0f;
-  color: #f5f5f5;
+  background: var(--bg-dark);
+  color: var(--text-light);
   padding: 1rem;
   font-size: 0.9rem;
   line-height: 1.6;
@@ -16,7 +31,7 @@ body {
   max-width: 700px;
   margin: auto;
   padding: 2rem;
-  background: #1a1a1a;
+  background: var(--card-bg);
   border-radius: 16px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   transition: all 0.3s ease-in-out;
@@ -40,7 +55,7 @@ body {
 
 .progress-bar {
   height: 100%;
-  background: #00d9ff;
+  background: var(--primary);
   width: 0%;
   transition: width 0.3s ease;
 }
@@ -50,20 +65,60 @@ body {
 }
 
 .question-box h2 {
-  color: #00d9ff;
+  color: var(--primary);
   margin-bottom: 1rem;
   font-size: 1.25rem;
 }
 
-.options label,
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  background: var(--neutral);
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  border: 2px solid transparent;
+  gap: 0.75rem;
+}
+
+.option:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.option input[type="radio"] {
+  display: none;
+}
+
+.option input[type="radio"]:checked + span {
+  font-weight: bold;
+  color: var(--bg-dark);
+  background: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: inline-block;
+  transition: background 0.2s ease;
+}
+
+.option span {
+  flex-grow: 1;
+  color: var(--text-light);
+}
+
 textarea,
 input[type="text"] {
   display: block;
-  background: #2a2a2a;
+  background: var(--neutral);
   padding: 1rem;
-  margin-bottom: 0.5rem;
   border-radius: 10px;
-  color: #f5f5f5;
+  color: var(--text-light);
   width: 100%;
   border: none;
   outline: none;
@@ -71,55 +126,50 @@ input[type="text"] {
   font-size: 1rem;
 }
 
-.options input[type="radio"] { display: none; }
-
-.options input[type="radio"]:checked + label {
-  background: #00d9ff;
-  color: #0f0f0f;
+textarea {
+  font-family: monospace;
+  min-height: 120px;
 }
 
 textarea:focus,
 input[type="text"]:focus {
   background: #353535;
-  outline: 2px solid #00d9ff;
+  outline: 2px solid var(--primary);
 }
 
 .puzzle-box {
   padding: 1rem;
   background: #1f1f1f;
-  border-left: 4px solid #00d9ff;
+  border-left: 4px solid var(--primary);
   border-radius: 10px;
   margin-bottom: 1rem;
   font-style: italic;
-  overflow: hidden;
-  transition: all 0.3s ease;
 }
 
 .puzzle-box strong {
-  display: block;
+  color: var(--primary);
   margin-bottom: 0.25rem;
-  color: #00d9ff;
-  position: relative;
+  display: block;
 }
 
 .summary h3 {
-  color: #00d9ff;
+  color: var(--primary);
   margin-bottom: 0.75rem;
 }
 
 .summary-item {
   margin-bottom: 1rem;
   padding: 0.75rem;
-  background: #2a2a2a;
+  background: var(--neutral);
   border-radius: 10px;
 }
 
 .summary-item.correct {
-  border-left: 4px solid #00ff90;
+  border-left: 4px solid var(--success);
 }
 
 .summary-item.incorrect {
-  border-left: 4px solid #ff5c5c;
+  border-left: 4px solid var(--error);
 }
 
 .btn-group {
@@ -132,8 +182,8 @@ input[type="text"]:focus {
 
 button {
   padding: 0.75rem 1.5rem;
-  background: #00d9ff;
-  color: #0f0f0f;
+  background: var(--primary);
+  color: var(--bg-dark);
   border: none;
   border-radius: 10px;
   font-weight: bold;
@@ -142,12 +192,37 @@ button {
 }
 
 button:hover {
-  background: #00bcd4;
+  background: var(--primary-hover);
 }
 
-.text-green { color: #00ff90; }
-.text-red { color: #ff5c5c; }
-.text-yellow { color: #ffe066; }
-.text-info { color: #66d9ef; }
-.text-warning { color: #ffc107; }
-.text-danger { color: #ff6b6b; }
+button:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.text-green { color: var(--success); }
+.text-red { color: var(--error); }
+.text-yellow { color: var(--warning); }
+.text-info { color: var(--info); }
+.text-warning { color: var(--warning); }
+.text-danger { color: var(--error); }
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1.25rem;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .question-box h2 {
+    font-size: 1rem;
+  }
+
+  textarea,
+  input[type="text"] {
+    font-size: 0.95rem;
+  }
+}
