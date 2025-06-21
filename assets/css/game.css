@@ -226,6 +226,10 @@ ul {
   color: var(--text-muted);
 }
 
+.dashboard-card {
+  border: solid rgba(0, 217, 255, 0.5);
+}
+
 .dashboard-card .link-btn {
   background: transparent;
   border: none;
