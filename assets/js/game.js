@@ -28,9 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
   renderRadarChart(user.name);
 
   if (localStorage.getItem("justCompletedQuiz") === "true") {
-    showToast("<i class='bi bi-check-circle-fill'></i> Quiz completed! Compare your performance below.");
+    showToast("<i class='bi bi-check-circle-fill'></i> Quiz completed!");
     localStorage.removeItem("justCompletedQuiz");
   }
+  
 });
 
 function getUser() {
@@ -188,7 +189,7 @@ function showToast(msg) {
   toast.classList.remove("hidden");
   setTimeout(() => {
     toast.classList.remove("show");
-  }, 7000);
+  }, 8000);
 }
 
 function renderRadarChart(username) {
