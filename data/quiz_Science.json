@@ -1,0 +1,368 @@
+{
+    "Easy": [
+        {
+            "question": "What does ICT stand for?",
+            "options": ["Information and Communication Technology", "Integrated Computer Tools", "Internet Communication Terminal", "Internal Circuit Test"],
+            "answer": "Information and Communication Technology",
+            "type": "mcq"
+        },
+        {
+            "question": "Which of these is an input device?",
+            "options": ["Monitor", "Keyboard", "Speaker", "Printer"],
+            "answer": "Keyboard",
+            "type": "mcq"
+        },
+        {
+            "question": "Puzzle: I store everything, yet I never forget. What am I?",
+            "hint": "Think of a computer component.",
+            "answer": "memory",
+            "type": "puzzle"
+        },
+        {
+            "question": "Which file format is typically used for web images?",
+            "options": ["PDF", "JPG", "DOCX", "MP3"],
+            "answer": "JPG",
+            "type": "mcq"
+        },
+        {
+            "question": "Which of these is a valid website domain?",
+            "options": ["example.com", "http://com", "www@site", "page#url"],
+            "answer": "example.com",
+            "type": "mcq"
+        },
+        {
+            "question": "What is a common use of PowerPoint?",
+            "options": ["Data analysis", "Video editing", "Presentations", "Coding"],
+            "answer": "Presentations",
+            "type": "mcq"
+        },
+        {
+            "question": "Which icon usually represents the internet?",
+            "options": ["Folder", "Trash bin", "Globe", "Lock"],
+            "answer": "Globe",
+            "type": "mcq"
+        },
+        {
+            "question": "What is the shortcut for Copy?",
+            "options": ["Ctrl + V", "Ctrl + X", "Ctrl + C", "Ctrl + A"],
+            "answer": "Ctrl + C",
+            "type": "mcq"
+        },
+        {
+            "question": "Puzzle: I disappear the moment you say my name. What am I?",
+            "hint": "Related to silence.",
+            "answer": "silence",
+            "type": "puzzle"
+        },
+        {
+            "question": "What app is commonly used for making spreadsheets?",
+            "options": ["Word", "PowerPoint", "Excel", "Outlook"],
+            "answer": "Excel",
+            "type": "mcq"
+        },
+        {
+            "question": "Which of these is a social media platform?",
+            "options": ["Chrome", "Photoshop", "Facebook", "Excel"],
+            "answer": "Facebook",
+            "type": "mcq"
+        },
+        {
+            "question": "Which device is used to print documents?",
+            "options": ["Scanner", "Router", "Printer", "Projector"],
+            "answer": "Printer",
+            "type": "mcq"
+        },
+        {
+            "question": "Puzzle: The more you take, the more you leave behind. What am I?",
+            "hint": "Think movement.",
+            "answer": "footsteps",
+            "type": "puzzle"
+        },
+        {
+            "question": "What is used to connect to the internet at home?",
+            "options": ["Monitor", "Router", "Mouse", "Scanner"],
+            "answer": "Router",
+            "type": "mcq"
+        },
+        {
+            "question": "Which one is an online learning platform?",
+            "options": ["Moodle", "VLC", "Notepad", "Paint"],
+            "answer": "Moodle",
+            "type": "mcq"
+        },
+        {
+            "question": "Which file type is a text file?",
+            "options": [".txt", ".mp4", ".jpg", ".exe"],
+            "answer": ".txt",
+            "type": "mcq"
+        },
+        {
+            "question": "What does USB stand for?",
+            "options": ["Universal Serial Bus", "Unique Service Bridge", "User System Backup", "Unified Signal Base"],
+            "answer": "Universal Serial Bus",
+            "type": "mcq"
+        },
+        {
+            "question": "Puzzle: I can fill a room but take up no space. What am I?",
+            "hint": "Think senses.",
+            "answer": "light",
+            "type": "puzzle"
+        },
+        {
+            "question": "Which is used to display output?",
+            "options": ["Mouse", "Scanner", "Monitor", "Keyboard"],
+            "answer": "Monitor",
+            "type": "mcq"
+        },
+        {
+            "question": "What does 'www' stand for?",
+            "options": ["Wide World Web", "Web World Wide", "World Wide Web", "Wide Web World"],
+            "answer": "World Wide Web",
+            "type": "mcq"
+        }
+    ],
+    "Medium": [
+    {
+        "question": "Which gas is essential for human respiration?",
+        "options": ["Carbon Dioxide", "Oxygen", "Hydrogen", "Nitrogen"],
+        "answer": "Oxygen",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: What has cities but no houses, rivers but no water?",
+        "hint": "It's used for navigation.",
+        "answer": "map",
+        "type": "puzzle"
+    },
+    {
+        "question": "Which planet has the most moons?",
+        "options": ["Earth", "Jupiter", "Mars", "Venus"],
+        "answer": "Jupiter",
+        "type": "mcq"
+    },
+    {
+        "question": "Which blood type is a universal donor?",
+        "options": ["A", "B", "O", "AB"],
+        "answer": "O",
+        "type": "mcq"
+    },
+    {
+        "question": "What is the study of living organisms called?",
+        "options": ["Geology", "Biology", "Physics", "Astronomy"],
+        "answer": "Biology",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: What gets wetter the more it dries?",
+        "hint": "Found in the bathroom.",
+        "answer": "towel",
+        "type": "puzzle"
+    },
+    {
+        "question": "What is the chemical symbol for Gold?",
+        "options": ["G", "Au", "Ag", "Go"],
+        "answer": "Au",
+        "type": "mcq"
+    },
+    {
+        "question": "Which part of the plant anchors it to the ground?",
+        "options": ["Leaf", "Flower", "Stem", "Root"],
+        "answer": "Root",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: What can you catch but not throw?",
+        "hint": "Involves health.",
+        "answer": "cold",
+        "type": "puzzle"
+    },
+    {
+        "question": "What type of energy is produced by moving water?",
+        "options": ["Thermal", "Solar", "Hydroelectric", "Chemical"],
+        "answer": "Hydroelectric",
+        "type": "mcq"
+    },
+    {
+        "question": "What is the basic unit of life?",
+        "options": ["Molecule", "Cell", "Tissue", "Organ"],
+        "answer": "Cell",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: What belongs to you but others use it more than you do?",
+        "hint": "Often heard.",
+        "answer": "name",
+        "type": "puzzle"
+    },
+    {
+        "question": "Which planet is known for its rings?",
+        "options": ["Mars", "Earth", "Saturn", "Jupiter"],
+        "answer": "Saturn",
+        "type": "mcq"
+    },
+    {
+        "question": "Which organ filters blood in the human body?",
+        "options": ["Liver", "Heart", "Kidney", "Lung"],
+        "answer": "Kidney",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I’m light as a feather, yet the strongest man can’t hold me. What am I?",
+        "hint": "Something you need to live.",
+        "answer": "breath",
+        "type": "puzzle"
+    },
+    {
+        "question": "What is the process by which plants make their food?",
+        "options": ["Photosynthesis", "Digestion", "Transpiration", "Osmosis"],
+        "answer": "Photosynthesis",
+        "type": "mcq"
+    },
+    {
+        "question": "Which blood cells fight infections?",
+        "options": ["Red", "White", "Platelets", "Plasma"],
+        "answer": "White",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I speak without a mouth and hear without ears. What am I?",
+        "hint": "A science phenomenon.",
+        "answer": "echo",
+        "type": "puzzle"
+    },
+    {
+        "question": "What is the outermost layer of the Earth called?",
+        "options": ["Core", "Mantle", "Crust", "Surface"],
+        "answer": "Crust",
+        "type": "mcq"
+    },
+    {
+        "question": "Which vitamin do we get from sunlight?",
+        "options": ["A", "C", "D", "B12"],
+        "answer": "D",
+        "type": "mcq"
+    }
+    ],
+    "Hard": [
+    {
+        "question": "Which particle carries a negative charge?",
+        "options": ["Proton", "Electron", "Neutron", "Photon"],
+        "answer": "Electron",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: What can run but never walks, has a bed but never sleeps?",
+        "hint": "Geographic feature.",
+        "answer": "river",
+        "type": "puzzle"
+    },
+    {
+        "question": "What is the powerhouse of the cell?",
+        "options": ["Nucleus", "Mitochondria", "Ribosome", "Chloroplast"],
+        "answer": "Mitochondria",
+        "type": "mcq"
+    },
+    {
+        "question": "Which gas is most abundant in Earth's atmosphere?",
+        "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+        "answer": "Nitrogen",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: The more you take away, the bigger I become. What am I?",
+        "hint": "Negative space.",
+        "answer": "hole",
+        "type": "puzzle"
+    },
+    {
+        "question": "What is the scientific name for water?",
+        "options": ["Dihydrogen monoxide", "Hydroxy compound", "H2", "O2H"],
+        "answer": "Dihydrogen monoxide",
+        "type": "mcq"
+    },
+    {
+        "question": "Which planet is the hottest in the solar system?",
+        "options": ["Mercury", "Mars", "Venus", "Jupiter"],
+        "answer": "Venus",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: What has one eye but can’t see?",
+        "hint": "Used in sewing.",
+        "answer": "needle",
+        "type": "puzzle"
+    },
+    {
+        "question": "What is the chemical formula for table salt?",
+        "options": ["HCl", "NaCl", "KCl", "CaCl"],
+        "answer": "NaCl",
+        "type": "mcq"
+    },
+    {
+        "question": "What organ produces insulin?",
+        "options": ["Liver", "Pancreas", "Heart", "Brain"],
+        "answer": "Pancreas",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I have branches but no fruit, trunk or leaves. What am I?",
+        "hint": "Think money.",
+        "answer": "bank",
+        "type": "puzzle"
+    },
+    {
+        "question": "What type of bond involves the sharing of electrons?",
+        "options": ["Ionic", "Metallic", "Hydrogen", "Covalent"],
+        "answer": "Covalent",
+        "type": "mcq"
+    },
+    {
+        "question": "Which planet has the strongest gravity?",
+        "options": ["Saturn", "Jupiter", "Earth", "Neptune"],
+        "answer": "Jupiter",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: I am not alive, but I grow. What am I?",
+        "hint": "Formed by nature.",
+        "answer": "crystal",
+        "type": "puzzle"
+    },
+    {
+        "question": "Which human organ can regenerate?",
+        "options": ["Heart", "Lung", "Liver", "Brain"],
+        "answer": "Liver",
+        "type": "mcq"
+    },
+    {
+        "question": "What is Newton's third law?",
+        "options": ["Object in motion...", "Force equals mass times acceleration", "For every action...", "Energy is neither..."],
+        "answer": "For every action...",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: The more there is, the less you see. What am I?",
+        "hint": "Opposite of light.",
+        "answer": "darkness",
+        "type": "puzzle"
+    },
+    {
+        "question": "What is the smallest unit of matter?",
+        "options": ["Molecule", "Cell", "Atom", "Electron"],
+        "answer": "Atom",
+        "type": "mcq"
+    },
+    {
+        "question": "What is the term for animals that eat both plants and meat?",
+        "options": ["Herbivore", "Carnivore", "Omnivore", "Detritivore"],
+        "answer": "Omnivore",
+        "type": "mcq"
+    },
+    {
+        "question": "Puzzle: What is always in front of you but can’t be seen?",
+        "hint": "It’s yet to come.",
+        "answer": "future",
+        "type": "puzzle"
+    }
+  ]
+}

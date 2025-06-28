@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard Unit Tests</title>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #0f0; padding: 2rem; }
+    .fail { color: #f55; }
+    .pass { color: #0f0; }
+    pre { background: #222; padding: 1rem; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Dashboard Tests</h1>
+  <div id="test-output"></div>
+  <script type="module">
+    import {
+      formatTime,
+      getColor,
+      getStreak,
+      generateSmartFeedbackText
+    } from '../assets/js/utils.js';
+
+    const tests = [];
+
+    function test(name, fn) {
+      tests.push({ name, fn });
+    }
+
+    function assertEqual(actual, expected) {
+      if (actual !== expected) throw new Error(`Expected: ${expected}, Got: ${actual}`);
+    }
+
+    function assertIncludes(array, value) {
+      if (!array.includes(value)) throw new Error(`Expected array to include: ${value}`);
+    }
+
+    // --- UNIT TESTS ---
+
+    test("formatTime should convert 90 to 01:30", () => {
+      assertEqual(formatTime(90), "01:30");
+    });
+
+    test("formatTime should return 00:00 for 0", () => {
+      assertEqual(formatTime(0), "00:00");
+    });
+
+    test("getColor should return info for index 0", () => {
+      assertEqual(getColor(0), "info");
+    });
+
+    test("getColor should loop back for index 6", () => {
+      assertEqual(getColor(6), "info");
+    });
+
+    test("getStreak should count consecutive passes", () => {
+      const data = [{ passed: true }, { passed: true }, { passed: false }];
+      assertEqual(getStreak(data), 2);
+    });
+
+    test("generateSmartFeedbackText should include Flawless", () => {
+      const data = [{ score: 10, total: 10, time: 50, passed: true }];
+      assertIncludes(generateSmartFeedbackText(data), "Flawless");
+    });
+
+    test("generateSmartFeedbackText should detect improving trend", () => {
+      const data = [
+        { score: 8, total: 10, time: 90, passed: true },
+        { score: 5, total: 10, time: 100, passed: true }
+      ];
+      assertIncludes(generateSmartFeedbackText(data), "You're improving");
+    });
+
+    // --- TEST RUNNER ---
+    const output = document.getElementById("test-output");
+    let passed = 0;
+
+    for (const { name, fn } of tests) {
+      try {
+        fn();
+        const el = document.createElement("div");
+        el.className = "pass";
+        el.textContent = `✅ ${name}`;
+        output.appendChild(el);
+        passed++;
+      } catch (err) {
+        const el = document.createElement("div");
+        el.className = "fail";
+        el.innerHTML = `❌ ${name}<pre>${err.message}</pre>`;
+        output.appendChild(el);
+      }
+    }
+
+    const summary = document.createElement("h2");
+    summary.innerHTML = `${passed}/${tests.length} tests passed`;
+    output.insertBefore(summary, output.firstChild);
+  </script>
+</body>
+</html>

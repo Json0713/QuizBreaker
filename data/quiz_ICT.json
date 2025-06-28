@@ -1,0 +1,518 @@
+{
+  "Easy": [
+    {
+      "question": "What does ICT stand for?",
+      "options": [
+        "Information and Communication Technology",
+        "Integrated Computer Tools",
+        "Internet Communication Terminal",
+        "Internal Circuit Test"
+      ],
+      "answer": "Information and Communication Technology",
+      "type": "mcq"
+    },
+    {
+      "question": "Which of these is an input device?",
+      "options": [
+        "Monitor",
+        "Keyboard",
+        "Speaker",
+        "Printer"
+      ],
+      "answer": "Keyboard",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: I store everything, yet I never forget. What am I?",
+      "hint": "Think of a computer component.",
+      "answer": "memory",
+      "type": "puzzle"
+    },
+    {
+      "question": "Which file format is typically used for web images?",
+      "options": [
+        "PDF",
+        "JPG",
+        "DOCX",
+        "MP3"
+      ],
+      "answer": "JPG",
+      "type": "mcq"
+    },
+    {
+      "question": "Which of these is a valid website domain?",
+      "options": [
+        "example.com",
+        "http://com",
+        "www@site",
+        "page#url"
+      ],
+      "answer": "example.com",
+      "type": "mcq"
+    },
+    {
+      "question": "What is a common use of PowerPoint?",
+      "options": [
+        "Data analysis",
+        "Video editing",
+        "Presentations",
+        "Coding"
+      ],
+      "answer": "Presentations",
+      "type": "mcq"
+    },
+    {
+      "question": "Which icon usually represents the internet?",
+      "options": [
+        "Folder",
+        "Trash bin",
+        "Globe",
+        "Lock"
+      ],
+      "answer": "Globe",
+      "type": "mcq"
+    },
+    {
+      "question": "What is the shortcut for Copy?",
+      "options": [
+        "Ctrl + V",
+        "Ctrl + X",
+        "Ctrl + C",
+        "Ctrl + A"
+      ],
+      "answer": "Ctrl + C",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: I disappear the moment you say my name. What am I?",
+      "hint": "Related to silence.",
+      "answer": "silence",
+      "type": "puzzle"
+    },
+    {
+      "question": "What app is commonly used for making spreadsheets?",
+      "options": [
+        "Word",
+        "PowerPoint",
+        "Excel",
+        "Outlook"
+      ],
+      "answer": "Excel",
+      "type": "mcq"
+    },
+    {
+      "question": "Which of these is a social media platform?",
+      "options": [
+        "Chrome",
+        "Photoshop",
+        "Facebook",
+        "Excel"
+      ],
+      "answer": "Facebook",
+      "type": "mcq"
+    },
+    {
+      "question": "Which device is used to print documents?",
+      "options": [
+        "Scanner",
+        "Router",
+        "Printer",
+        "Projector"
+      ],
+      "answer": "Printer",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: The more you take, the more you leave behind. What am I?",
+      "hint": "Think movement.",
+      "answer": "footsteps",
+      "type": "puzzle"
+    },
+    {
+      "question": "What is used to connect to the internet at home?",
+      "options": [
+        "Monitor",
+        "Router",
+        "Mouse",
+        "Scanner"
+      ],
+      "answer": "Router",
+      "type": "mcq"
+    },
+    {
+      "question": "Which one is an online learning platform?",
+      "options": [
+        "Moodle",
+        "VLC",
+        "Notepad",
+        "Paint"
+      ],
+      "answer": "Moodle",
+      "type": "mcq"
+    },
+    {
+      "question": "Which file type is a text file?",
+      "options": [
+        ".txt",
+        ".mp4",
+        ".jpg",
+        ".exe"
+      ],
+      "answer": ".txt",
+      "type": "mcq"
+    },
+    {
+      "question": "What does USB stand for?",
+      "options": [
+        "Universal Serial Bus",
+        "Unique Service Bridge",
+        "User System Backup",
+        "Unified Signal Base"
+      ],
+      "answer": "Universal Serial Bus",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: I can fill a room but take up no space. What am I?",
+      "hint": "Think senses.",
+      "answer": "light",
+      "type": "puzzle"
+    },
+    {
+      "question": "Which is used to display output?",
+      "options": [
+        "Mouse",
+        "Scanner",
+        "Monitor",
+        "Keyboard"
+      ],
+      "answer": "Monitor",
+      "type": "mcq"
+    },
+    {
+      "question": "What does 'www' stand for?",
+      "options": [
+        "Wide World Web",
+        "Web World Wide",
+        "World Wide Web",
+        "Wide Web World"
+      ],
+      "answer": "World Wide Web",
+      "type": "mcq"
+    }
+  ],
+  "Medium": [
+    {
+      "question": "Which protocol is used to access websites on the internet?",
+      "options": [
+        "FTP",
+        "SMTP",
+        "HTTP",
+        "SNMP"
+      ],
+      "answer": "HTTP",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: What comes once in a minute, twice in a moment, but never in a thousand years?",
+      "hint": "Think letters.",
+      "answer": "m",
+      "type": "puzzle"
+    },
+    {
+      "question": "Which storage device typically has no moving parts?",
+      "options": [
+        "HDD",
+        "CD-ROM",
+        "Floppy Disk",
+        "SSD"
+      ],
+      "answer": "SSD",
+      "type": "mcq"
+    },
+    {
+      "question": "What does a firewall do?",
+      "options": [
+        "Stores data",
+        "Secures network",
+        "Boosts speed",
+        "Manages passwords"
+      ],
+      "answer": "Secures network",
+      "type": "mcq"
+    },
+    {
+      "question": "Which is NOT an operating system?",
+      "options": [
+        "Windows",
+        "Linux",
+        "MacOS",
+        "Python"
+      ],
+      "answer": "Python",
+      "type": "mcq"
+    },
+    {
+      "question": "Terminal: Show current directory",
+      "answer": "pwd",
+      "type": "terminal"
+    },
+    {
+      "question": "Calculator: Convert binary 1010 to decimal",
+      "answer": "10",
+      "type": "calculator"
+    },
+    {
+      "question": "Code: Create a simple HTML button",
+      "answer": "<button>Click Me</button>",
+      "type": "code"
+    },
+    {
+      "question": "Which software is used to create databases?",
+      "options": [
+        "Excel",
+        "MySQL",
+        "Word",
+        "Chrome"
+      ],
+      "answer": "MySQL",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: What invention lets you look right through a wall?",
+      "hint": "Common household feature.",
+      "answer": "window",
+      "type": "puzzle"
+    },
+    {
+      "question": "What is phishing?",
+      "options": [
+        "A hacking tool",
+        "An email scam",
+        "A web browser",
+        "A programming language"
+      ],
+      "answer": "An email scam",
+      "type": "mcq"
+    },
+    {
+      "question": "Which tag is used for a heading in HTML?",
+      "options": [
+        "<p>",
+        "<head>",
+        "<title>",
+        "<h1>"
+      ],
+      "answer": "<h1>",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: I am always in front of you but can\u2019t be seen. What am I?",
+      "hint": "Not visible.",
+      "answer": "future",
+      "type": "puzzle"
+    },
+    {
+      "question": "Which app is used to compress files?",
+      "options": [
+        "WinRAR",
+        "VLC",
+        "Notepad",
+        "Paint"
+      ],
+      "answer": "WinRAR",
+      "type": "mcq"
+    },
+    {
+      "question": "Calculator: What is 100 in hexadecimal?",
+      "answer": "64",
+      "type": "calculator"
+    },
+    {
+      "question": "Which of these is a programming language?",
+      "options": [
+        "Chrome",
+        "C++",
+        "Google",
+        "Excel"
+      ],
+      "answer": "C++",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: What has keys but can\u2019t open locks?",
+      "hint": "Used in ICT daily.",
+      "answer": "keyboard",
+      "type": "puzzle"
+    },
+    {
+      "question": "Terminal: List all files including hidden in Linux",
+      "answer": "ls -a",
+      "type": "terminal"
+    },
+    {
+      "question": "Which one is used to write documents?",
+      "options": [
+        "MS Word",
+        "MS Excel",
+        "Paint",
+        "Chrome"
+      ],
+      "answer": "MS Word",
+      "type": "mcq"
+    },
+    {
+      "question": "Code: JavaScript to display 'Hello'",
+      "answer": "console.log('Hello');",
+      "type": "code"
+    }
+  ],
+  "Hard": [
+    {
+      "question": "What port does HTTPS typically use?",
+      "options": [
+        "20",
+        "21",
+        "443",
+        "80"
+      ],
+      "answer": "443",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: What 11-letter word has each letter twice?",
+      "hint": "Used in accounting.",
+      "answer": "bookkeeper",
+      "type": "puzzle"
+    },
+    {
+      "question": "Terminal: Show contents of a file named 'info.txt'",
+      "answer": "cat info.txt",
+      "type": "terminal"
+    },
+    {
+      "question": "Calculator: What is the result of 2^10?",
+      "answer": "1024",
+      "type": "calculator"
+    },
+    {
+      "question": "Code: Python to check for even number",
+      "answer": "def is_even(n): return n % 2 == 0",
+      "type": "code"
+    },
+    {
+      "question": "Which is a function of a DNS server?",
+      "options": [
+        "Store passwords",
+        "Convert IPs to domains",
+        "Block ads",
+        "Stream videos"
+      ],
+      "answer": "Convert IPs to domains",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: Forward I am heavy, backward I am not. What am I?",
+      "hint": "Think spelling.",
+      "answer": "ton",
+      "type": "puzzle"
+    },
+    {
+      "question": "What tool is used to inspect web elements in a browser?",
+      "options": [
+        "DevTools",
+        "Firewall",
+        "Database",
+        "CMD"
+      ],
+      "answer": "DevTools",
+      "type": "mcq"
+    },
+    {
+      "question": "Terminal: Navigate up one directory",
+      "answer": "cd ..",
+      "type": "terminal"
+    },
+    {
+      "question": "Which of these is a markup language?",
+      "options": [
+        "CSS",
+        "JavaScript",
+        "HTML",
+        "Python"
+      ],
+      "answer": "HTML",
+      "type": "mcq"
+    },
+    {
+      "question": "Code: HTML to insert an image",
+      "answer": "<img src='image.jpg' alt='Image' />",
+      "type": "code"
+    },
+    {
+      "question": "Calculator: Decimal to binary of 15",
+      "answer": "1111",
+      "type": "calculator"
+    },
+    {
+      "question": "Puzzle: The more you take, the bigger I get. What am I?",
+      "hint": "Common riddle.",
+      "answer": "hole",
+      "type": "puzzle"
+    },
+    {
+      "question": "What device converts digital to analog signal?",
+      "options": [
+        "Router",
+        "Modem",
+        "Switch",
+        "Repeater"
+      ],
+      "answer": "Modem",
+      "type": "mcq"
+    },
+    {
+      "question": "Code: CSS to change background to blue",
+      "answer": "body { background-color: blue; }",
+      "type": "code"
+    },
+    {
+      "question": "Terminal: Make a new directory called 'docs'",
+      "answer": "mkdir docs",
+      "type": "terminal"
+    },
+    {
+      "question": "Which one is a web browser?",
+      "options": [
+        "VLC",
+        "GIMP",
+        "Firefox",
+        "Notepad++"
+      ],
+      "answer": "Firefox",
+      "type": "mcq"
+    },
+    {
+      "question": "Calculator: Hexadecimal of 1A",
+      "answer": "26",
+      "type": "calculator"
+    },
+    {
+      "question": "What does URL stand for?",
+      "options": [
+        "Universal Resource Locator",
+        "Unified Routing Link",
+        "User Referenced List",
+        "Uniform Routing Line"
+      ],
+      "answer": "Universal Resource Locator",
+      "type": "mcq"
+    },
+    {
+      "question": "Puzzle: What has hands but can't clap?",
+      "hint": "It's on your wall.",
+      "answer": "clock",
+      "type": "puzzle"
+    }
+  ]
+}

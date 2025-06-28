@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuizBreaker | Quizapp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="assets/js/index.js" defer></script>
+</head>
+<body>
+  <main class="container-fluid">
+    <h1>QuizBreaker</h1>
+    <marquee class="description" direction="left">QuizBreaker is your interactive gateway to mastering General Knowledge with ICT, Sciences, History and more. Solve logic puzzles, command-line challenges, and more designed for both beginners and pros.</marquee>
+
+    <form id="userForm" role="form" novalidate>
+      <div class="mb-3 position-relative">
+        <label for="username" class="form-label">Name</label>
+        <div class="input-group">
+          <span class="input-group-text d-none text-danger bg-transparent border-0" id="inputIcon"><i class="bi bi-exclamation-circle"></i></span>
+          <input type="text" id="username" name="username" class="form-control" placeholder="Enter your name..." maxlength="24" aria-required="true">
+        </div>
+        <div id="errorMsg" class="invalid-feedback"></div>
+      </div>
+      <button type="submit" id="submitBtn" class="py-2 px-4 w-100 d-flex justify-content-center align-items-center custom-btn rounded-5">
+        <span class="default-text">Login</span>
+      </button>
+    </form>
+
+    <div id="recentAccounts" class="recent">
+      <h2 class="d-flex justify-content-between align-items-center">
+        Login <button class="btn btn-sm text-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRecent" aria-expanded="false" aria-controls="collapseRecent">
+          <i id="toggleDropdown" class="bi bi-chevron-down"></i>
+        </button>
+      </h2>
+      
+      <div id="loadingUsers" class="d-none mb-4 d-flex justify-content-center align-items-center">
+        <div class="spinner-border me-2" role="status"></div>
+      </div>
+    
+      <div id="collapseRecent" class="collapse show">
+        <div id="recentUsers"></div>
+        <div id="dropdownUsers" class="dropdown flex-column gap-2" style="max-height: 240px; overflow-y: auto;"></div>
+      </div>
+    </div>
+    
+    <!-- YOUR ORIGINAL HTML STAYS INTACT -->
+    <div class="social-links position-fixed bottom-0 end-0 m-4">
+      <a href="https://my-portfolio-fawn-six-spddunmlyp.vercel.app/#hero" target="_blank" aria-label="Coffee">
+        <i class="bi bi-cup-hot-fill fs-1 text-secondary"></i>
+      </a>
+      <a href="https://github.com/Json0713/QuizBreaker" target="_blank" aria-label="GitHub">
+        <i class="bi bi-github fs-1 text-secondary"></i>
+      </a>
+    </div>
+    
+    <!-- FLOATING CALLOUT NEAR .social-links -->
+    <div id="socialCallout" class="position-fixed bg-dark text-white border-0 shadow-lg rounded-3 p-3" 
+         style="bottom: 100px; right: 30px; display: none; z-index: 1050; max-width: 260px; backdrop-filter: blur(4px);">
+      <div class="d-flex justify-content-between align-items-start mb-2">
+        <div class="pe-2">
+          <strong class="small d-block">You can just Visit me Here!</strong>
+          <span class="small text-white-50">Click the icons to see My Profile and for more Details about Our Project! You can reach out and Sending feedbacks to Improve the app and user Experience <i class="bi bi-person-hearts"></i></span>
+        </div>
+        <button type="button" class="btn-close btn-close-white btn-sm" aria-label="Close" onclick="hideCallout()"></button>
+      </div>
+      <div class="arrow-down mt-2 mx-auto"></div>
+    </div>
+    
+    <style>
+      .arrow-down {
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid #212529; /* Matches bg-dark */
+      }
+    
+      #socialCallout {
+        animation: fadeInUp 0.6s ease-in-out;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+    
+      #socialCallout.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    
+      .btn-close-white {
+        filter: invert(1);
+      }
+    </style>
+    
+    <script>
+      setTimeout(() => {
+        const callout = document.getElementById("socialCallout");
+        callout.style.display = "block";
+        requestAnimationFrame(() => {
+          callout.classList.add("show");
+        });
+      }, 5000);
+    
+      function hideCallout() {
+        const callout = document.getElementById("socialCallout");
+        callout.classList.remove("show");
+        setTimeout(() => {
+          callout.style.display = "none";
+        }, 300);
+      }
+    </script>
+
+
+    <div class="footer">Made with <i class="bi bi-cup-hot"></i> for curious minds Jason B. | © QuizBreaker 2025</div>
+    
+  </main>
+
+  <div id="confirmModal" class="modal fade" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-body text-center">
+          <p id="confirmModalLabel">Are you sure you want to delete this user?</p>
+          <div class="d-flex justify-content-center gap-3 mt-3">
+            <button id="confirmDeleteBtn" class="btn btn-danger rounded-4">Delete</button>
+            <button id="cancelDeleteBtn" class="btn btn-secondary rounded-4" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmLoginModal" class="modal fade" tabindex="-1" aria-labelledby="confirmLoginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-body text-center">
+          <p id="confirmLoginModalLabel">Login as this user?</p>
+          <div class="d-flex justify-content-center gap-3 mt-3">
+            <button onclick="confirmLogin()" class="btn btn-info rounded-4">Yes</button>
+            <button class="btn btn-secondary rounded-4" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--Github Integration-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
