@@ -132,8 +132,24 @@ h2 {
   background: var(--hover-bg);
 }
 
+.option:has(input[type="radio"]:checked) {
+  border-color: var(--primary);
+  background: rgba(0, 217, 255, 0.1);
+}
+
 input[type="radio"] {
   display: none;
+}
+
+.option span {
+  color: var(--text-light);
+  display: block;
+}
+
+.option span small {
+  color: var(--text-muted);
+  display: block;
+  font-weight: normal;
 }
 
 input[type="radio"]:checked + span {
@@ -315,19 +331,29 @@ input:focus {
   outline-offset: 2px;
 }
 
+.options-container.is-invalid .option {
+  border-color: var(--error);
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
 .toast {
   position: fixed;
   top: 1.25rem;
   left: 50%;
   transform: translateX(-50%);
   background: var(--card-bg);
-  color: var(--success);
-  border-left: 4px solid var(--success);
-  box-shadow: 0 0 12px rgba(0, 255, 144, 0.2);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
   padding: 0.75rem 1.25rem;
   border-radius: 8px;
   z-index: 2000;
-  width: 300px;
+  width: auto;
+  max-width: 90vw;
   font-weight: 600;
   display: flex;
   gap: 0.5rem;
@@ -337,6 +363,18 @@ input:focus {
   transition: opacity 0.4s ease, transform 0.3s ease;
 }
 
+.toast.success {
+  color: var(--success);
+  border-left: 4px solid var(--success);
+  box-shadow: 0 0 12px rgba(0, 255, 144, 0.2);
+}
+
+.toast.error {
+  color: var(--error);
+  border-left: 4px solid var(--error);
+  box-shadow: 0 0 12px rgba(255, 92, 92, 0.2);
+}
+
 .toast.show {
   opacity: 1;
   pointer-events: auto;
@@ -344,8 +382,9 @@ input:focus {
 
 .toast i {
   font-size: 1.2rem;
-  color: var(--success);
 }
+.toast.success i { color: var(--success); }
+.toast.error i { color: var(--error); }
 
 #overviewCard {
   animation: fadeIn 0.5s ease-in-out;

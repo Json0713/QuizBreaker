@@ -59,17 +59,11 @@ function renderOptions(containerId, items, groupName) {
   });
 
   container.querySelectorAll(`input[name='${groupName}']`).forEach(el => {
-    el.addEventListener("change", toggleStartButton);
+    el.addEventListener("change", () => {
+      // Remove invalid class on change
+      container.classList.remove("is-invalid");
+    });
   });
-}
-
-function toggleStartButton() {
-  const category = document.querySelector("input[name='category']:checked");
-  const difficulty = document.querySelector("input[name='difficulty']:checked");
-  const startBtn = document.getElementById("startBtn");
-  const isReady = !!(category && difficulty);
-  startBtn.disabled = !isReady;
-  startBtn.setAttribute("aria-disabled", !isReady);
 }
 
 function initEventListeners(username) {
@@ -90,7 +84,19 @@ function initEventListeners(username) {
 function startQuiz() {
   const category = document.querySelector("input[name='category']:checked");
   const difficulty = document.querySelector("input[name='difficulty']:checked");
-  if (!category || !difficulty) return;
+  
+  const catContainer = document.getElementById("categoryOptions");
+  const diffContainer = document.getElementById("difficultyOptions");
+  
+  catContainer.classList.remove("is-invalid");
+  diffContainer.classList.remove("is-invalid");
+
+  if (!category || !difficulty) {
+    if (!category) catContainer.classList.add("is-invalid");
+    if (!difficulty) diffContainer.classList.add("is-invalid");
+    showToast("<i class='bi bi-exclamation-triangle-fill'></i> Please select a Category and Difficulty!", true);
+    return;
+  }
 
   const config = {
     category: category.value,
@@ -159,11 +165,10 @@ function confirmDelete() {
   document.getElementById("deleteModal").style.display = "none";
 }
 
-function showToast(msg) {
+function showToast(msg, isError = false) {
   const toast = document.getElementById("toast");
   toast.innerHTML = msg;
-  toast.classList.add("show");
-  toast.classList.remove("hidden");
+  toast.className = "toast show " + (isError ? "error" : "success");
   setTimeout(() => {
     toast.classList.remove("show");
   }, 8000);
