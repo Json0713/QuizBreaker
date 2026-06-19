@@ -32,7 +32,7 @@ export function initSidebar() {
         </li>
         <li>
           <a href="#" class="disabled" onclick="event.preventDefault()">
-            <i class="bi bi-gear"></i> Custom Quizzes (Soon)
+            <i class="bi bi-gear"></i> Custom Quizzes
           </a>
         </li>
       </ul>

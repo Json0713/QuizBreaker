@@ -120,11 +120,11 @@ function showQuestion() {
       <div class='puzzle-box revealed'>
         <div class="hint-content"><strong>Hint:</strong> ${q.hint || "Solve the puzzle."}</div>
       </div>
-      <input type='text' id='puzzleInput' value='${saved}' placeholder='Your answer...' />
+      <input type='text' id='puzzleInput' autocomplete='off' spellcheck='false' value='${saved}' placeholder='Your answer...' />
     `;
   } else if (["calculator", "sql", "terminal", "code"].includes(q.type)) {
     wrapper.innerHTML = `
-      <textarea id='codeInput' placeholder='Enter your answer here...'>${saved}</textarea>
+      <textarea id='codeInput' autocomplete='off' spellcheck='false' placeholder='Enter your answer here...'>${saved}</textarea>
     `;
   } else if (Array.isArray(q.options)) {
     const shuffledOptions = [...q.options];
@@ -138,6 +138,17 @@ function showQuestion() {
         </label>
       `;
     });
+  }
+
+  const prevBtn = document.getElementById("prevBtn");
+  if (prevBtn) {
+    if (current === 0) {
+      prevBtn.disabled = true;
+      prevBtn.classList.add("btn-disabled");
+    } else {
+      prevBtn.disabled = false;
+      prevBtn.classList.remove("btn-disabled");
+    }
   }
 
   document.getElementById("progressBar").style.width = `${((current + 1) / questions.length) * 100}%`;
