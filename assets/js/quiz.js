@@ -1,4 +1,6 @@
 // /assets/js/quiz.js — Updated to trigger justCompletedQuiz flag and radar data
+import { quizData } from './quiz_data.js';
+
 
 let questions = [], answers = [], current = 0, startTime, timerRef, overtime = 0, latestResult = null;
 let remainingTime = 0;
@@ -27,15 +29,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     timeToAdd = s.add;
     timeToSub = s.sub;
     try {
-      const res = await fetch(`../../data/quiz_${config.category}.json`);
-      const data = await res.json();
+      const data = quizData[config.category] || {};
       questions = data[config.difficulty] || [];
       // To ensure there are enough questions for a good survival run on a single difficulty, 
       // we might just shuffle the existing 20 questions. If they survive past 20, they win!
     } catch (err) { questions = []; }
   } else {
     remainingTime = difficultyTime[config.difficulty];
-    questions = await loadQuizData(config.category, config.difficulty);
+    const categoryData = quizData[config.category] || {};
+    questions = categoryData[config.difficulty] || [];
   }
 
   setupTimer();
@@ -91,8 +93,7 @@ function formatTime(s) {
 
 async function loadQuizData(category, difficulty) {
   try {
-    const res = await fetch(`../../data/quiz_${category}.json`);
-    const data = await res.json();
+    const data = quizData[category] || {};
     return data[difficulty] || [];
   } catch (err) {
     return [];
