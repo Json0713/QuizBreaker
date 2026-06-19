@@ -119,20 +119,32 @@
     </style>
     
     <script>
+      function shouldShowCallout() {
+        const hideUntil = localStorage.getItem("quizbreaker_hide_callout_until");
+        if (!hideUntil) return true;
+        return Date.now() > parseInt(hideUntil, 10);
+      }
+
       setTimeout(() => {
+        if (!shouldShowCallout()) return;
         const callout = document.getElementById("socialCallout");
-        callout.style.display = "block";
-        requestAnimationFrame(() => {
-          callout.classList.add("show");
-        });
+        if (callout) {
+          callout.style.display = "block";
+          requestAnimationFrame(() => {
+            callout.classList.add("show");
+          });
+        }
       }, 5000);
     
       function hideCallout() {
+        localStorage.setItem("quizbreaker_hide_callout_until", Date.now() + 900000); // 15 mins
         const callout = document.getElementById("socialCallout");
-        callout.classList.remove("show");
-        setTimeout(() => {
-          callout.style.display = "none";
-        }, 300);
+        if (callout) {
+          callout.classList.remove("show");
+          setTimeout(() => {
+            callout.style.display = "none";
+          }, 300);
+        }
       }
     </script>
 

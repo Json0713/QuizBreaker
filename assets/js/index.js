@@ -147,12 +147,20 @@ const collapsedMessage = document.getElementById("collapsedMessage");
 const toggleIcon = document.getElementById("toggleDropdown");
 
 if (collapseEl && collapsedMessage && toggleIcon) {
+  if (localStorage.getItem("quizbreaker_recent_collapsed") === "true") {
+    collapseEl.classList.remove("show");
+    collapsedMessage.classList.remove("d-none");
+    toggleIcon.className = "bi bi-chevron-right";
+  }
+
   collapseEl.addEventListener('hidden.bs.collapse', () => {
     collapsedMessage.classList.remove('d-none');
     toggleIcon.className = 'bi bi-chevron-right';
+    localStorage.setItem("quizbreaker_recent_collapsed", "true");
   });
   collapseEl.addEventListener('show.bs.collapse', () => {
     collapsedMessage.classList.add('d-none');
     toggleIcon.className = 'bi bi-chevron-down';
+    localStorage.setItem("quizbreaker_recent_collapsed", "false");
   });
 }
