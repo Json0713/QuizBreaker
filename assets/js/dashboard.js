@@ -42,11 +42,31 @@ function formatTime(s) {
   return `${m}:${sec}`;
 }
 
-function showNoData(containerId) {
+function prepareContainer(containerId, hasData) {
   const container = document.getElementById(containerId);
-  if (!container) return;
-  const parent = container.tagName === 'CANVAS' ? container.parentElement : container;
-  parent.innerHTML = '<div class="chart-empty">No data available yet</div>';
+  if (!container) return false;
+  
+  if (container.tagName === 'CANVAS') {
+    const parent = container.parentElement;
+    let emptyMsg = parent.querySelector('.chart-empty');
+    if (emptyMsg) emptyMsg.remove();
+    
+    if (hasData) {
+      container.style.display = 'block';
+      return true;
+    } else {
+      container.style.display = 'none';
+      parent.insertAdjacentHTML('beforeend', '<div class="chart-empty">No data available yet</div>');
+      return false;
+    }
+  } else {
+    if (hasData) {
+      return true;
+    } else {
+      container.innerHTML = '<div class="chart-empty">No data available yet</div>';
+      return false;
+    }
+  }
 }
 
 function generateSmartFeedback(data) {
@@ -90,8 +110,8 @@ function generateSmartFeedback(data) {
 }
 
 function renderScoreChart(data) {
+  if (!prepareContainer("scoreChart", data.length > 0)) return;
   const canvas = document.getElementById("scoreChart");
-  if (!data.length) return showNoData("scoreChart");
   const ctx = canvas.getContext("2d");
   const chart = new Chart(ctx, {
     type: "line",
@@ -131,12 +151,21 @@ function renderCategoryAccuracyBars(data) {
   const container = document.getElementById("categoryAccuracyBars");
   container.innerHTML = "";
   const entries = Object.entries(categories);
-  if (!entries.length) return showNoData("categoryAccuracyBars");
   
   let anyData = false;
   entries.forEach(([cat, val], i) => {
-    const acc = val.total > 0 ? Math.round((val.correct / val.total) * 100) : 0;
     if (val.total > 0) anyData = true;
+  });
+
+  if (!prepareContainer("categoryAccuracyBars", anyData)) {
+    const mostPlayed = entries.sort((a, b) => b[1].count - a[1].count)[0];
+    document.getElementById("mostPlayedCategory").textContent = mostPlayed && mostPlayed[1].count > 0 ? `${mostPlayed[0]} (${mostPlayed[1].count}x)` : "--";
+    return;
+  }
+  
+  entries.forEach(([cat, val], i) => {
+    if (val.total === 0) return;
+    const acc = Math.round((val.correct / val.total) * 100);
     const progressBar = document.createElement("div");
     progressBar.className = "progress-item";
     progressBar.innerHTML = `
@@ -150,8 +179,6 @@ function renderCategoryAccuracyBars(data) {
     container.appendChild(progressBar);
   });
   
-  if (!anyData) container.innerHTML = '<div class="chart-empty">No data available yet</div>';
-  
   const mostPlayed = entries.sort((a, b) => b[1].count - a[1].count)[0];
   document.getElementById("mostPlayedCategory").textContent = mostPlayed ? `${mostPlayed[0]} (${mostPlayed[1].count}x)` : "--";
 }
@@ -162,8 +189,8 @@ function getColor(index) {
 }
 
 function renderPassFailChart(data) {
+  if (!prepareContainer("passFailChart", data.length > 0)) return;
   const canvas = document.getElementById("passFailChart");
-  if (!data.length) return showNoData("passFailChart");
   const ctx = canvas.getContext("2d");
   const pass = data.filter(d => d.passed).length;
   const fail = data.length - pass;
@@ -186,7 +213,6 @@ function renderPassFailChart(data) {
 }
 
 function renderDifficultyChart(data) {
-  const canvas = document.getElementById("difficultyChart");
   const diff = {};
   data.forEach(d => {
     if (!diff[d.difficulty]) diff[d.difficulty] = { correct: 0, total: 0 };
@@ -194,7 +220,9 @@ function renderDifficultyChart(data) {
     diff[d.difficulty].total += d.total;
   });
   const labels = Object.keys(diff);
-  if (!labels.length) return showNoData("difficultyChart");
+  if (!prepareContainer("difficultyChart", labels.length > 0)) return;
+  
+  const canvas = document.getElementById("difficultyChart");
   
   const values = labels.map(l => Math.round((diff[l].correct / diff[l].total) * 100));
   const ctx = canvas.getContext("2d");
@@ -230,8 +258,8 @@ function renderStreakData(data) {
 }
 
 function renderRecentList(data) {
+  if (!prepareContainer("recentSummary", data.length > 0)) return;
   const list = document.getElementById("recentSummary");
-  if (!data.length) return showNoData("recentSummary");
   const latest = data.slice(0, 5);
   list.innerHTML = latest.map(q => `
     <div class="quiz-line ${q.passed ? 'passed' : 'failed'}">

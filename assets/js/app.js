@@ -2,9 +2,6 @@ import { initSidebar } from './sidebar.js';
 import { initGame } from './game.js';
 import { initDashboard } from './dashboard.js';
 
-initSidebar();
-initGame();
-
 window.addEventListener("viewChanged", (e) => {
   if (e.detail.view === "dashboard") {
     initDashboard();
@@ -20,3 +17,6 @@ window.addEventListener("viewChanged", (e) => {
     }, 5000);
   }
 });
+
+initSidebar();
+initGame();
