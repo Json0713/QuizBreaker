@@ -13,8 +13,12 @@ const loadingUsers = document.getElementById("loadingUsers");
 const redirected = sessionStorage.getItem("fromGame") === "true";
 if (redirected && loadingUsers) {
   loadingUsers.classList.remove("d-none");
+  const collapseEl = document.getElementById("collapseRecent");
+  if (collapseEl) collapseEl.classList.add("d-none");
+  
   setTimeout(() => {
     loadingUsers.classList.add("d-none");
+    if (collapseEl) collapseEl.classList.remove("d-none");
     renderUsers();
     sessionStorage.removeItem("fromGame");
   }, 5000);
@@ -104,7 +108,13 @@ function renderUsers() {
   dropdown.innerHTML = "";
 
   if (users.length === 0) {
-    card.style.display = 'none';
+    card.style.display = 'block';
+    recentList.innerHTML = `
+      <div class="d-flex flex-column justify-content-center align-items-center h-100 w-100 text-center" style="min-height: 180px; color: #888;">
+        <i class="bi bi-person-x" style="font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.5;"></i>
+        <p class="mb-0">No recent logins yet</p>
+      </div>
+    `;
     return;
   } else {
     card.style.display = 'block';
@@ -131,3 +141,18 @@ function confirmDelete(index) {
 
 window.confirmLogin = confirmLogin;
 window.confirmDelete = confirmDelete;
+
+const collapseEl = document.getElementById("collapseRecent");
+const collapsedMessage = document.getElementById("collapsedMessage");
+const toggleIcon = document.getElementById("toggleDropdown");
+
+if (collapseEl && collapsedMessage && toggleIcon) {
+  collapseEl.addEventListener('hide.bs.collapse', () => {
+    collapsedMessage.classList.remove('d-none');
+    toggleIcon.className = 'bi bi-chevron-right';
+  });
+  collapseEl.addEventListener('show.bs.collapse', () => {
+    collapsedMessage.classList.add('d-none');
+    toggleIcon.className = 'bi bi-chevron-down';
+  });
+}

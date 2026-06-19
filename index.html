@@ -11,39 +11,62 @@
   <script type="module" src="assets/js/index.js" defer></script>
 </head>
 <body>
-  <main class="container-fluid">
-    <h1>QuizBreaker</h1>
-    <marquee class="description" direction="left">QuizBreaker is your interactive gateway to mastering General Knowledge with ICT, Sciences, History and more. Solve logic puzzles, command-line challenges, and more designed for both beginners and pros.</marquee>
+  <main class="container login-wrapper">
+    <div class="login-box">
+      <h1>QuizBreaker</h1>
+      <marquee class="description" direction="left">QuizBreaker is your interactive gateway to mastering General Knowledge with ICT, Sciences, History and more. Solve logic puzzles, command-line challenges, and more designed for both beginners and pros.</marquee>
 
-    <form id="userForm" role="form" novalidate>
-      <div class="mb-3 position-relative">
-        <label for="username" class="form-label">Name</label>
-        <div class="input-group">
-          <span class="input-group-text d-none text-danger bg-transparent border-0" id="inputIcon"><i class="bi bi-exclamation-circle"></i></span>
-          <input type="text" id="username" name="username" class="form-control" placeholder="Enter your name..." maxlength="24" aria-required="true">
+      <div class="row gx-4 mt-4">
+        <!-- Left Side: Login Form -->
+        <div class="col-md-6 mb-4 mb-md-0">
+          <div class="login-form-container">
+            <h2 class="form-title">Login</h2>
+            <form id="userForm" role="form" novalidate>
+              <div class="mb-4 position-relative">
+                <label for="username" class="form-label">Name</label>
+                <div class="input-group">
+                  <span class="input-group-text d-none text-danger bg-transparent border-0" id="inputIcon"><i class="bi bi-exclamation-circle"></i></span>
+                  <input type="text" id="username" name="username" class="form-control" placeholder="Enter your name..." maxlength="24" aria-required="true">
+                </div>
+                <div id="errorMsg" class="invalid-feedback"></div>
+              </div>
+              <button type="submit" id="submitBtn" class="py-2 px-4 w-100 d-flex justify-content-center align-items-center custom-btn rounded-5">
+                <span class="default-text">Start Playing</span>
+              </button>
+            </form>
+          </div>
         </div>
-        <div id="errorMsg" class="invalid-feedback"></div>
-      </div>
-      <button type="submit" id="submitBtn" class="py-2 px-4 w-100 d-flex justify-content-center align-items-center custom-btn rounded-5">
-        <span class="default-text">Login</span>
-      </button>
-    </form>
 
-    <div id="recentAccounts" class="recent">
-      <h2 class="d-flex justify-content-between align-items-center">
-        Login <button class="btn btn-sm text-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRecent" aria-expanded="false" aria-controls="collapseRecent">
-          <i id="toggleDropdown" class="bi bi-chevron-down"></i>
-        </button>
-      </h2>
+        <!-- Right Side: Recent Logins -->
+        <div class="col-md-6 d-flex flex-column">
+          <div id="recentAccounts" class="recent mt-0 flex-grow-1 d-flex flex-column">
+            <h2 class="d-flex justify-content-between align-items-center">
+              Recent Logins 
+              <button class="btn btn-sm text-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRecent" aria-expanded="false" aria-controls="collapseRecent">
+                <i id="toggleDropdown" class="bi bi-chevron-down"></i>
+              </button>
+            </h2>
+            
+            <div id="loadingUsers" class="d-none flex-grow-1 d-flex justify-content-center align-items-center w-100 h-100">
+              <div class="spinner-border me-2" role="status" style="width: 2.5rem; height: 2.5rem; color: #00d9ff !important;"></div>
+            </div>
+          
+            <div id="collapseRecent" class="collapse show flex-grow-1">
+              <div class="recent-scroll-area h-100 d-flex flex-column">
+                <div id="recentUsers" class="flex-grow-1"></div>
+                <div id="dropdownUsers" class="dropdown flex-column gap-2"></div>
+              </div>
+            </div>
+
+            <div id="collapsedMessage" class="d-none flex-grow-1 d-flex flex-column justify-content-center align-items-center w-100 h-100 text-center" style="min-height: 180px; color: #888;">
+              <i class="bi bi-eye-slash" style="font-size: 2.5rem; margin-bottom: 0.5rem; opacity: 0.5;"></i>
+              <p class="mb-0">Recent logins hidden</p>
+            </div>
+          </div>
+        </div>
+      </div>
       
-      <div id="loadingUsers" class="d-none mb-4 d-flex justify-content-center align-items-center">
-        <div class="spinner-border me-2" role="status"></div>
-      </div>
-    
-      <div id="collapseRecent" class="collapse show">
-        <div id="recentUsers"></div>
-        <div id="dropdownUsers" class="dropdown flex-column gap-2" style="max-height: 240px; overflow-y: auto;"></div>
-      </div>
+      <div class="footer mt-5">Made with <i class="bi bi-cup-hot"></i> for curious minds Jason B. | © QuizBreaker 2025</div>
     </div>
     
     <!-- YOUR ORIGINAL HTML STAYS INTACT -->
@@ -114,8 +137,6 @@
     </script>
 
 
-    <div class="footer">Made with <i class="bi bi-cup-hot"></i> for curious minds Jason B. | © QuizBreaker 2025</div>
-    
   </main>
 
   <div id="confirmModal" class="modal fade" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
