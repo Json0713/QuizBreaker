@@ -345,7 +345,7 @@ input:focus {
 .toast {
   position: fixed;
   top: 1.25rem;
-  left: 50%;
+  left: calc(50% + 125px);
   transform: translateX(-50%);
   background: var(--card-bg);
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
@@ -420,5 +420,9 @@ input:focus {
   .option span small {
     display: block;
     font-size: 0.75rem;
+  }
+  
+  .toast {
+    left: 50%;
   }
 }
