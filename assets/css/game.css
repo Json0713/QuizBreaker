@@ -178,11 +178,17 @@ label {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 .stat-row .stat-value {
   font-weight: bold;
   font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+  max-width: 60%;
 }
 
 ul {
