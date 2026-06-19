@@ -1,20 +1,50 @@
 // /assets/js/quiz.js — Updated to trigger justCompletedQuiz flag and radar data
 
 let questions = [], answers = [], current = 0, startTime, timerRef, overtime = 0, latestResult = null;
+let remainingTime = 0;
+let isSurvival = false;
+let timeToAdd = 5;
+let timeToSub = 3;
 
 document.addEventListener("DOMContentLoaded", async () => {
   const config = JSON.parse(localStorage.getItem("quizbreaker_config"));
   const user = JSON.parse(localStorage.getItem("quizbreaker_user"));
   if (!config || !user) return location.href = "/index.html";
 
+  isSurvival = config.mode === "Survival";
   const difficultyTime = { Easy: 90, Medium: 120, Hard: 180 };
-  startTime = new Date();
-  setupTimer(difficultyTime[config.difficulty]);
+  const survivalSettings = {
+    Easy: { time: 60, add: 10, sub: 2 },
+    Medium: { time: 45, add: 7, sub: 3 },
+    Hard: { time: 30, add: 5, sub: 5 }
+  };
 
-  questions = await loadQuizData(config.category, config.difficulty);
+  startTime = new Date();
+
+  if (isSurvival) {
+    const s = survivalSettings[config.difficulty] || survivalSettings.Medium;
+    remainingTime = s.time;
+    timeToAdd = s.add;
+    timeToSub = s.sub;
+    try {
+      const res = await fetch(`../../data/quiz_${config.category}.json`);
+      const data = await res.json();
+      questions = data[config.difficulty] || [];
+      // To ensure there are enough questions for a good survival run on a single difficulty, 
+      // we might just shuffle the existing 20 questions. If they survive past 20, they win!
+    } catch (err) { questions = []; }
+  } else {
+    remainingTime = difficultyTime[config.difficulty];
+    questions = await loadQuizData(config.category, config.difficulty);
+  }
+
+  setupTimer();
+
   if (!questions.length) return location.href = "../../app.html#game";
   shuffleArray(questions);
-  questions = questions.slice(0, 10);
+  if (!isSurvival) {
+    questions = questions.slice(0, 10);
+  }
   answers = Array(questions.length).fill(null);
 
   document.getElementById("prevBtn").addEventListener("click", prevQuestion);
@@ -22,19 +52,35 @@ document.addEventListener("DOMContentLoaded", async () => {
   showQuestion();
 });
 
-function setupTimer(seconds) {
+function setupTimer() {
   const timerEl = document.getElementById("timer");
-  let remaining = seconds;
-  timerEl.textContent = `Time Limit: ${formatTime(remaining)}`;
+  timerEl.innerHTML = `Time Limit: ${formatTime(remainingTime)}`;
   timerRef = setInterval(() => {
-    if (remaining > 0) {
-      remaining--;
-      timerEl.innerHTML = `Time Left: ${formatTime(remaining)}`;
+    if (remainingTime > 0) {
+      remainingTime--;
+      timerEl.innerHTML = `Time Left: ${formatTime(remainingTime)}`;
+      
+      if (isSurvival && remainingTime <= 10) {
+        timerEl.classList.add("timer-pulse", "text-red");
+      } else {
+        timerEl.classList.remove("timer-pulse", "text-red");
+      }
+    } else if (isSurvival) {
+      endQuiz(); // Survival mode ends exactly at 0
     } else {
       overtime++;
       timerEl.innerHTML = `Time Over <span class='text-red'>+${formatTime(overtime)}</span>`;
     }
   }, 1000);
+}
+
+function animateTime(amount) {
+  const timerEl = document.getElementById("timer");
+  const floater = document.createElement("span");
+  floater.textContent = amount > 0 ? `+${amount}s` : `${amount}s`;
+  floater.className = `time-floater ${amount > 0 ? 'text-green' : 'text-red'}`;
+  timerEl.appendChild(floater);
+  setTimeout(() => floater.remove(), 1000);
 }
 
 function formatTime(s) {
@@ -107,9 +153,34 @@ function getUserInput(q) {
 function nextQuestion() {
   const q = questions[current];
   const selected = getUserInput(q);
+  if (!selected && q.options && !isSurvival) return alert("Please select an answer."); // Survival allows skipping? Or just enforce selection. Let's enforce selection.
   if (!selected && q.options) return alert("Please select an answer.");
 
   answers[current] = selected;
+  
+  if (isSurvival) {
+    const isCorrect = (selected || '').trim().toLowerCase() === (q.answer || '').trim().toLowerCase();
+    if (isCorrect) {
+      remainingTime += timeToAdd;
+      animateTime(timeToAdd);
+    } else {
+      remainingTime -= timeToSub;
+      animateTime(-timeToSub);
+      if (remainingTime <= 0) {
+        remainingTime = 0;
+        return endQuiz();
+      }
+    }
+    const timerEl = document.getElementById("timer");
+    // Preserve any existing floaters by using textContent for the base text and re-appending floaters? 
+    // Easier to just let setInterval update it next tick, or update it directly
+    const currentFloaters = timerEl.querySelectorAll('.time-floater');
+    timerEl.innerHTML = `Time Left: ${formatTime(remainingTime)}`;
+    currentFloaters.forEach(f => timerEl.appendChild(f));
+    
+    if (remainingTime > 10) timerEl.classList.remove("timer-pulse", "text-red");
+  }
+
   current++;
   current >= questions.length ? endQuiz() : showQuestion();
 }
@@ -126,21 +197,26 @@ function endQuiz() {
   const endTime = new Date();
   const duration = Math.floor((endTime - startTime) / 1000);
 
-  const detailed = questions.map((q, i) => ({
+  const answeredQuestions = isSurvival ? questions.slice(0, current) : questions;
+  const answeredAnswers = answers.slice(0, answeredQuestions.length);
+
+  const detailed = answeredQuestions.map((q, i) => ({
     question: q.question,
-    selected: answers[i],
+    selected: answeredAnswers[i],
     correct: q.answer
   }));
 
   const score = detailed.filter(q => (q.selected || '').trim().toLowerCase() === (q.correct || '').trim().toLowerCase()).length;
-  const pass = score >= 6;
+  const pass = isSurvival ? score >= 10 : score >= 6;
+  const total = isSurvival ? (current === 0 ? 1 : current) : questions.length;
 
   const result = {
     user: user.name,
     category: config.category,
     difficulty: config.difficulty,
+    mode: config.mode || "Standard",
     score,
-    total: questions.length,
+    total: total,
     time: duration,
     passed: pass,
     date: new Date().toISOString(),
@@ -155,7 +231,12 @@ function endQuiz() {
   showSummary(result);
 }
 
-function getSmartFeedback(score, total, overtime) {
+function getSmartFeedback(score, total, overtime, isSurvival) {
+  if (isSurvival) {
+    if (score >= 20) return "<i class='bi bi-fire text-red'></i> Incredible survival skills! You're a machine!";
+    if (score >= 10) return "<i class='bi bi-shield-check text-green'></i> Great job, you survived a long time.";
+    return "<i class='bi bi-emoji-frown text-danger'></i> Time ran out fast! Keep practicing.";
+  }
   const accuracy = (score / total) * 100;
   if (accuracy === 100 && overtime === 0) return "<i class='bi bi-stars text-green'></i> Perfect! Outstanding timing and accuracy!";
   if (accuracy === 100 && overtime > 0) return "<i class='bi bi-hourglass-split text-yellow'></i> Perfect score, but time was exceeded.";
@@ -163,12 +244,12 @@ function getSmartFeedback(score, total, overtime) {
   if (accuracy >= 80) return "<i class='bi bi-stopwatch text-yellow'></i> Great score, but time management can improve.";
   if (accuracy >= 50) return "<i class='bi bi-lightbulb text-info'></i> Fair effort, you’re on the right track.";
   if (accuracy > 0) return "<i class='bi bi-emoji-neutral text-warning'></i> Needs improvement. Try to focus on accuracy and speed.";
-  return "<i class='bi bi-emoji-frown text-danger'></i> Don’t worry! Practice makes perfect!"
+  return "<i class='bi bi-emoji-frown text-danger'></i> Don’t worry! Practice makes perfect!";
 }
 
 function showSummary(result) {
   const accuracy = (result.score / result.total) * 100;
-  const feedback = getSmartFeedback(result.score, result.total, overtime);
+  const feedback = getSmartFeedback(result.score, result.total, overtime, result.mode === 'Survival');
 
   document.querySelector(".container").innerHTML = `
     <h2>Quiz Summary</h2>

@@ -231,3 +231,38 @@ button:focus {
     font-size: 0.95rem;
   }
 }
+
+/* Timer Animations */
+#timer {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+.timer-pulse {
+  animation: pulse-red 1s infinite;
+  display: inline-block;
+}
+
+@keyframes pulse-red {
+  0% { text-shadow: 0 0 5px rgba(255, 92, 92, 0.5); transform: scale(1); }
+  50% { text-shadow: 0 0 15px rgba(255, 92, 92, 1); transform: scale(1.05); }
+  100% { text-shadow: 0 0 5px rgba(255, 92, 92, 0.5); transform: scale(1); }
+}
+
+.time-floater {
+  position: absolute;
+  top: -20px;
+  right: -30px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  opacity: 0;
+  animation: floatUp 1s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  pointer-events: none;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-30px) scale(1.2); opacity: 0; }
+}

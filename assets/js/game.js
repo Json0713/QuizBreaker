@@ -14,14 +14,30 @@ const difficulties = [
   { id: "Hard", label: "Hard", desc: "Challenging for advanced users" },
 ];
 
+const modes = [
+  { id: "Standard", label: "Standard", desc: "10 questions, fixed time limit" },
+  { id: "Survival", label: "Survival", desc: "Race against the clock! Time added/lost scales with difficulty." }
+];
+
 export function initGame() {
   const user = getUser();
   if (!user) return redirectToLogin();
 
+  renderOptions("modeOptions", modes, "mode");
   renderOptions("categoryOptions", categories, "category");
   renderOptions("difficultyOptions", difficulties, "difficulty");
   renderRecent(user.name);
   initEventListeners(user.name);
+  
+  // Handle mode selection change
+  document.querySelectorAll("input[name='mode']").forEach(el => {
+    el.addEventListener("change", (e) => {
+      // Difficulty is now required for both modes
+      const diffCard = document.getElementById("difficultyOptions").closest('.card');
+      diffCard.style.opacity = "1";
+      diffCard.style.pointerEvents = "auto";
+    });
+  });
 
   renderRadarChart(user.name);
 
@@ -82,23 +98,39 @@ function initEventListeners(username) {
 }
 
 function startQuiz() {
+  const mode = document.querySelector("input[name='mode']:checked");
   const category = document.querySelector("input[name='category']:checked");
   const difficulty = document.querySelector("input[name='difficulty']:checked");
   
+  const modeContainer = document.getElementById("modeOptions");
   const catContainer = document.getElementById("categoryOptions");
   const diffContainer = document.getElementById("difficultyOptions");
   
+  modeContainer.classList.remove("is-invalid");
   catContainer.classList.remove("is-invalid");
   diffContainer.classList.remove("is-invalid");
 
-  if (!category || !difficulty) {
-    if (!category) catContainer.classList.add("is-invalid");
-    if (!difficulty) diffContainer.classList.add("is-invalid");
-    showToast("<i class='bi bi-exclamation-triangle-fill'></i> Please select a Category and Difficulty!", true);
+  let hasError = false;
+  if (!mode) {
+    modeContainer.classList.add("is-invalid");
+    hasError = true;
+  }
+  if (!category) {
+    catContainer.classList.add("is-invalid");
+    hasError = true;
+  }
+  if (!difficulty) {
+    diffContainer.classList.add("is-invalid");
+    hasError = true;
+  }
+
+  if (hasError) {
+    showToast("<i class='bi bi-exclamation-triangle-fill'></i> Please select all required options!", true);
     return;
   }
 
   const config = {
+    mode: mode.value,
     category: category.value,
     difficulty: difficulty.value,
     startTime: new Date().toISOString(),
@@ -129,8 +161,8 @@ function createQuizItem(quiz, index, username) {
   li.className = "quiz-item";
   li.innerHTML = `
     <div>
-      <strong>${quiz.category} (${quiz.difficulty})</strong><br>
-      <span class="${quiz.passed ? 'text-green' : 'text-red'}">Score: ${quiz.score}/${quiz.total}</span> –
+      <strong>${quiz.category} (${quiz.mode === 'Survival' ? 'Survival: ' + quiz.difficulty : quiz.difficulty})</strong><br>
+      <span class="${quiz.passed ? 'text-green' : 'text-red'}">Score: ${quiz.score}${quiz.mode === 'Survival' ? '' : '/' + quiz.total}</span> –
       <small>${new Date(quiz.date).toLocaleString()}</small>
     </div>
     <button class="delete-btn" aria-label="Delete quiz record" onclick="event.stopPropagation(); showDeleteModal(${index}, '${username}')">
@@ -195,7 +227,8 @@ function renderRadarChart(username) {
   const toRadar = (quiz) => {
     const accuracy = quiz.score / quiz.total * 100;
     const timeScore = Math.max(0, 100 - quiz.time);
-    const difficulty = { Easy: 1, Medium: 2, Hard: 3 }[quiz.difficulty] * 33.3;
+    const diffScores = { Easy: 1, Medium: 2, Hard: 3, Survival: 3 };
+    const difficulty = (diffScores[quiz.difficulty] || 2) * 33.3;
     const precision = getPrecisionStreak(quiz);
     return [accuracy, timeScore, difficulty, precision];
   };
