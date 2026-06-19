@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupTimer(difficultyTime[config.difficulty]);
 
   questions = await loadQuizData(config.category, config.difficulty);
-  if (!questions.length) return location.href = "/game.html";
+  if (!questions.length) return location.href = "../../app.html#game";
   shuffleArray(questions);
   questions = questions.slice(0, 10);
   answers = Array(questions.length).fill(null);
@@ -204,7 +204,7 @@ function exitToGamePage() {
       difficulty: latestResult.difficulty
     }));
   }
-  location.href = 'game.html';
+  location.href = '../../app.html#game';
 }
 
 window.exitToGamePage = exitToGamePage;

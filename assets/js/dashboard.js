@@ -1,6 +1,4 @@
 // /assets/js/dashboard.js
-import { initSidebar } from './sidebar.js';
-
 const DEFAULT_CATEGORIES = ["ICT", "Science", "History"];
 
 let charts = [];
@@ -10,12 +8,11 @@ function resetCharts() {
   charts = [];
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+export function initDashboard() {
   const user = JSON.parse(localStorage.getItem("quizbreaker_user"));
   const recent = JSON.parse(localStorage.getItem("quizbreaker_recent")) || [];
-  if (!user) return location.href = "/index.html";
+  if (!user) return location.href = "index.html";
   
-  initSidebar();
   document.querySelector(".alert-feedback .btn-close")?.addEventListener("click", () => {
     document.getElementById("feedbackAlert").classList.add("d-none");
   });
@@ -38,8 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderDifficultyChart(userResults);
   renderRecentList(userResults);
   renderStreakData(userResults);
-});
-
+}
 function formatTime(s) {
   const m = Math.floor(s / 60).toString().padStart(2, '0');
   const sec = (s % 60).toString().padStart(2, '0');

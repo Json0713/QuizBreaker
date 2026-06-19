@@ -1,6 +1,4 @@
 // /assets/js/game.js — Simplified Final with Fallback Message, Optimized
-import { initSidebar } from './sidebar.js';
-
 let pendingDeleteIndex = null;
 let pendingUser = null;
 
@@ -16,11 +14,10 @@ const difficulties = [
   { id: "Hard", label: "Hard", desc: "Challenging for advanced users" },
 ];
 
-document.addEventListener("DOMContentLoaded", () => {
+export function initGame() {
   const user = getUser();
   if (!user) return redirectToLogin();
 
-  initSidebar();
   renderOptions("categoryOptions", categories, "category");
   renderOptions("difficultyOptions", difficulties, "difficulty");
   renderRecent(user.name);
@@ -32,8 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showToast("<i class='bi bi-check-circle-fill'></i> Quiz completed!");
     localStorage.removeItem("justCompletedQuiz");
   }
-  
-});
+}
 
 function getUser() {
   try {
@@ -45,7 +41,7 @@ function getUser() {
 
 function redirectToLogin() {
   localStorage.clear();
-  location.href = "/index.html";
+  location.href = "index.html";
 }
 
 function renderOptions(containerId, items, groupName) {

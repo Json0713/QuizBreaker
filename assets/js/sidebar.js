@@ -3,7 +3,7 @@ export function initSidebar() {
   const user = userStr ? JSON.parse(userStr) : null;
   
   if (!user) {
-    location.href = "../../index.html";
+    location.href = "index.html";
     return;
   }
 
@@ -16,17 +16,17 @@ export function initSidebar() {
       </div>
       <ul class="sidebar-nav">
         <li>
-          <a href="game.html" class="${currentPath.includes('game.html') ? 'active' : ''}">
+          <a href="#game" id="nav-game">
             <i class="bi bi-play-circle"></i> Quick Play
           </a>
         </li>
         <li>
-          <a href="dashboard.html" class="${currentPath.includes('dashboard.html') ? 'active' : ''}">
+          <a href="#dashboard" id="nav-dashboard">
             <i class="bi bi-bar-chart"></i> Dashboard
           </a>
         </li>
         <li>
-          <a href="advance.html" class="${currentPath.includes('advance.html') ? 'active' : ''}">
+          <a href="#advance" id="nav-advance">
             <i class="bi bi-lightbulb"></i> Advanced Quizzes
           </a>
         </li>
@@ -54,6 +54,36 @@ export function initSidebar() {
   const layout = document.querySelector('.app-layout');
   if (layout) {
     layout.insertAdjacentHTML('afterbegin', sidebarHTML);
+
+    // Setup routing logic
+    function handleRoute() {
+      let hash = location.hash.replace("#", "") || "game";
+      
+      // Hide all views
+      document.querySelectorAll(".view").forEach(el => el.classList.add("d-none"));
+      
+      // Show target view
+      const targetView = document.getElementById("view-" + hash);
+      if (targetView) {
+        targetView.classList.remove("d-none");
+      } else {
+        document.getElementById("view-game").classList.remove("d-none");
+        hash = "game";
+      }
+
+      // Update active nav links
+      document.querySelectorAll(".sidebar-nav a").forEach(a => a.classList.remove("active"));
+      const activeLink = document.getElementById("nav-" + hash);
+      if (activeLink) activeLink.classList.add("active");
+
+      // Dispatch event so app.js can re-render charts if needed
+      window.dispatchEvent(new CustomEvent("viewChanged", { detail: { view: hash } }));
+    }
+
+    window.addEventListener("hashchange", handleRoute);
+    
+    // Initial route
+    handleRoute();
   }
 
   const logoutBtn = document.getElementById("sidebarLogoutBtn");
@@ -69,12 +99,12 @@ export function initSidebar() {
           confirmBtn.setAttribute("data-logout-bound", "true");
           confirmBtn.addEventListener("click", () => {
             localStorage.removeItem("quizbreaker_user");
-            location.href = "../../index.html";
+            location.href = "index.html";
           });
         }
       } else {
         localStorage.removeItem("quizbreaker_user");
-        location.href = "../../index.html";
+        location.href = "index.html";
       }
     });
   }

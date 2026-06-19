@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const quiz = JSON.parse(localStorage.getItem("quizbreaker_summary"));
-  if (!quiz) return location.href = "game.html";
+  if (!quiz) return location.href = "../../app.html#game";
 
   const container = document.getElementById("summaryContainer");
 
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `).join('')}
         <div class="btn-group">
-          <button onclick="location.href='game.html'"><i class="bi bi-arrow-left"></i> Back to Game</button>
+          <button onclick="location.href='../../app.html#game'"><i class="bi bi-arrow-left"></i> Back to Game</button>
         </div>
       </div>
     `;

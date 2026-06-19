@@ -6,9 +6,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        advance: resolve(__dirname, 'src/app/advance.html'),
-        dashboard: resolve(__dirname, 'src/app/dashboard.html'),
-        game: resolve(__dirname, 'src/app/game.html'),
+        app: resolve(__dirname, 'app.html'),
         quiz: resolve(__dirname, 'src/app/quiz.html'),
         summary: resolve(__dirname, 'src/app/summary.html')
       }

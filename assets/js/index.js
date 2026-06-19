@@ -2,64 +2,66 @@
 
 let pendingUser = null;
 
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("userForm");
-  const input = document.getElementById("username");
-  const errorMsg = document.getElementById("errorMsg");
-  const icon = document.getElementById("inputIcon");
-  const submitBtn = document.getElementById("submitBtn");
-  const defaultBtnText = submitBtn.querySelector(".default-text");
-  const loadingUsers = document.getElementById("loadingUsers");
+const form = document.getElementById("userForm");
+const input = document.getElementById("username");
+const errorMsg = document.getElementById("errorMsg");
+const icon = document.getElementById("inputIcon");
+const submitBtn = document.getElementById("submitBtn");
+const defaultBtnText = submitBtn ? submitBtn.querySelector(".default-text") : null;
+const loadingUsers = document.getElementById("loadingUsers");
 
-  const redirected = sessionStorage.getItem("fromGame") === "true";
-  if (redirected) {
-    loadingUsers.classList.remove("d-none");
-    setTimeout(() => {
-      loadingUsers.classList.add("d-none");
-      renderUsers();
-      sessionStorage.removeItem("fromGame");
-    }, 5000);
-  } else {
+const redirected = sessionStorage.getItem("fromGame") === "true";
+if (redirected && loadingUsers) {
+  loadingUsers.classList.remove("d-none");
+  setTimeout(() => {
+    loadingUsers.classList.add("d-none");
     renderUsers();
+    sessionStorage.removeItem("fromGame");
+  }, 5000);
+} else {
+  renderUsers();
+}
+
+form?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  errorMsg.textContent = "";
+  input.classList.remove("is-invalid");
+  icon.classList.add("d-none");
+
+  const username = input.value.trim();
+  if (!username) {
+    errorMsg.textContent = "Please enter your name.";
+    input.classList.add("is-invalid");
+    icon.classList.remove("d-none");
+    return;
   }
 
-  form?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    errorMsg.textContent = "";
-    input.classList.remove("is-invalid");
-    icon.classList.add("d-none");
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = `
+    <span class="spinner-border spinner-border-sm me-2" role="status" style="color: #333;"></span>
+    <span class="btn-text" style="color: #333;">Logging In...</span>
+  `;
 
-    const username = input.value.trim();
-    if (!username) {
-      errorMsg.textContent = "Please enter your name.";
-      input.classList.add("is-invalid");
-      icon.classList.remove("d-none");
-      return;
-    }
+  const user = {
+    name: username,
+    joinedAt: new Date().toISOString(),
+    score: 0,
+    currentLevel: 1
+  };
+  localStorage.setItem("quizbreaker_user", JSON.stringify(user));
+  let history = [];
+  try {
+    const parsed = JSON.parse(localStorage.getItem("quizbreaker_users"));
+    if (Array.isArray(parsed)) history = parsed;
+  } catch (e) {}
+  const already = history.find(u => u.name === username);
+  if (!already) history.unshift(user);
+  localStorage.setItem("quizbreaker_users", JSON.stringify(history.slice(0, 10)));
 
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `
-      <span class="spinner-border spinner-border-sm me-2" role="status" style="color: #333;"></span>
-      <span class="btn-text" style="color: #333;">Logging In...</span>
-    `;
-
-    const user = {
-      name: username,
-      joinedAt: new Date().toISOString(),
-      score: 0,
-      currentLevel: 1
-    };
-    localStorage.setItem("quizbreaker_user", JSON.stringify(user));
-    const history = JSON.parse(localStorage.getItem("quizbreaker_users")) || [];
-    const already = history.find(u => u.name === username);
-    if (!already) history.unshift(user);
-    localStorage.setItem("quizbreaker_users", JSON.stringify(history.slice(0, 10)));
-
-    setTimeout(() => {
-      sessionStorage.setItem("fromGame", "true");
-      window.location.href = "src/app/game.html";
-    }, 3000);
-  });
+  setTimeout(() => {
+    sessionStorage.setItem("fromGame", "true");
+    window.location.href = "app.html#game";
+  }, 3000);
 });
 
 function createUserItem(u, index) {
@@ -90,7 +92,7 @@ function createUserItem(u, index) {
 function confirmLogin() {
   if (!pendingUser) return;
   localStorage.setItem("quizbreaker_user", JSON.stringify(pendingUser));
-  window.location.href = "src/app/game.html";
+  window.location.href = "app.html#game";
 }
 
 function renderUsers() {
