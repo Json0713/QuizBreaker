@@ -164,6 +164,27 @@ label {
   cursor: pointer;
 }
 
+.stat-row {
+  background: var(--neutral);
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-row .stat-label {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-row .stat-value {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
 ul {
   padding-left: 0;
   color: #ccc;

@@ -27,6 +27,7 @@ export function initGame() {
   renderOptions("categoryOptions", categories, "category");
   renderOptions("difficultyOptions", difficulties, "difficulty");
   renderRecent(user.name);
+  renderQuickProfile(user.name);
   initEventListeners(user.name);
   
   // Handle mode selection change
@@ -80,6 +81,25 @@ function renderOptions(containerId, items, groupName) {
       container.classList.remove("is-invalid");
     });
   });
+}
+
+function renderQuickProfile(username) {
+  const recent = JSON.parse(localStorage.getItem("quizbreaker_recent")) || [];
+  const userQuizzes = recent.filter(q => q.user === username);
+
+  document.getElementById("qp-name").textContent = username;
+  document.getElementById("qp-total").textContent = userQuizzes.length;
+  
+  if (userQuizzes.length === 0) {
+    document.getElementById("qp-accuracy").textContent = "0%";
+    return;
+  }
+  
+  const totalScore = userQuizzes.reduce((acc, curr) => acc + curr.score, 0);
+  const totalPossible = userQuizzes.reduce((acc, curr) => acc + curr.total, 0);
+  const accuracy = totalPossible ? Math.round((totalScore / totalPossible) * 100) : 0;
+  
+  document.getElementById("qp-accuracy").textContent = `${accuracy}%`;
 }
 
 function initEventListeners(username) {
