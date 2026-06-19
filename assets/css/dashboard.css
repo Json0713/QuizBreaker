@@ -7,11 +7,10 @@ body {
   padding: 1rem;
 }
 
-.dashboard-container {
+.dashboard {
   max-width: 1200px;
   margin: auto;
-  padding: 1rem;
-  background: #1a1a1a;
+  padding: 0.5rem;
   border-radius: 16px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
@@ -258,7 +257,7 @@ canvas {
   .chart-container {
     padding: 0.5rem;
   }
-  .dashboard-container {
+  .dashboard {
     padding: 1rem 0.75rem;
   }
 }
