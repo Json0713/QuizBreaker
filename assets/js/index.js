@@ -147,7 +147,7 @@ const collapsedMessage = document.getElementById("collapsedMessage");
 const toggleIcon = document.getElementById("toggleDropdown");
 
 if (collapseEl && collapsedMessage && toggleIcon) {
-  collapseEl.addEventListener('hide.bs.collapse', () => {
+  collapseEl.addEventListener('hidden.bs.collapse', () => {
     collapsedMessage.classList.remove('d-none');
     toggleIcon.className = 'bi bi-chevron-right';
   });
