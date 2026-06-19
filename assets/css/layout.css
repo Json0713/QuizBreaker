@@ -7,13 +7,14 @@
 
 body {
   margin: 0;
-  padding: 0 !important; /* Override dashboard/game padding */
-  overflow: hidden; /* Main content will handle scrolling */
+  padding: 0 !important;
+  overflow: hidden;
+  overscroll-behavior-y: none; /* Prevents pull-to-refresh on mobile */
 }
 
 .app-layout {
   display: flex;
-  height: 100vh;
+  height: 100dvh; /* Uses Dynamic Viewport Height to fix mobile address bar hiding bottom content */
   width: 100%;
   background: var(--bg-dark, #0f0f0f);
 }
@@ -142,7 +143,6 @@ body {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 2rem;
 }
 
 /* Mobile Responsive */
@@ -212,6 +212,7 @@ body {
   }
   .main-content {
     padding: 1rem;
+    padding-bottom: 4rem; /* Extra padding at the bottom to ensure the last button isn't blocked by the mobile URL bar */
   }
 }
 
