@@ -66,9 +66,18 @@ QuizBreaker/
 ```bash
 git clone https://github.com/json0713/QuizBreaker.git
 cd QuizBreaker
+
+# Install dependencies
+npm install
+
+# Start the local development server
+npm run dev
+
+# Build for production
+npm run build
 ```
 
-Open `index.html` directly in your browser.
+Open `http://localhost:5173` directly in your browser.
 
 ---
 
