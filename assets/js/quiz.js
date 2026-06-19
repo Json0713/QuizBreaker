@@ -206,3 +206,6 @@ function exitToGamePage() {
   }
   location.href = 'game.html';
 }
+
+window.exitToGamePage = exitToGamePage;
+

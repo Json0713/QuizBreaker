@@ -126,3 +126,6 @@ function confirmDelete(index) {
     modal.hide();
   };
 }
+
+window.confirmLogin = confirmLogin;
+window.confirmDelete = confirmDelete;

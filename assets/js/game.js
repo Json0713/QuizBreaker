@@ -280,3 +280,6 @@ function getPrecisionStreak(quiz) {
   }
   return Math.min(100, (maxStreak / quiz.details.length) * 100);
 }
+
+window.showDeleteModal = showDeleteModal;
+
