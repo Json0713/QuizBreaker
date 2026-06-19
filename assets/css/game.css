@@ -297,7 +297,7 @@ ul {
 .modal-buttons {
   margin-top: 1rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   gap: 1rem;
 }
 
