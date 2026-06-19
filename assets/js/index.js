@@ -87,6 +87,8 @@ function createUserItem(u, index) {
   div.onclick = (event) => {
     event.stopPropagation();
     pendingUser = u;
+    const label = document.getElementById("confirmLoginModalLabel");
+    if (label) label.textContent = `Login as ${name}?`;
     const modal = new bootstrap.Modal(document.getElementById("confirmLoginModal"));
     modal.show();
   };
