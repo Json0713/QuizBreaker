@@ -99,7 +99,7 @@ function startQuiz() {
   };
 
   localStorage.setItem("quizbreaker_config", JSON.stringify(config));
-  location.href = "quiz.html";
+  location.href = "src/app/quiz.html";
 }
 
 function renderRecent(username) {
@@ -134,7 +134,7 @@ function createQuizItem(quiz, index, username) {
 
   li.onclick = () => {
     localStorage.setItem("quizbreaker_summary", JSON.stringify(quiz));
-    location.href = "summary.html";
+    location.href = "src/app/summary.html";
   };
 
   return li;
