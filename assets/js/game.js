@@ -79,8 +79,24 @@ function renderOptions(containerId, items, groupName) {
     el.addEventListener("change", () => {
       // Remove invalid class on change
       container.classList.remove("is-invalid");
+      checkStartButtonState();
     });
   });
+}
+
+function checkStartButtonState() {
+  const mode = document.querySelector("input[name='mode']:checked");
+  const category = document.querySelector("input[name='category']:checked");
+  const difficulty = document.querySelector("input[name='difficulty']:checked");
+  const startBtn = document.getElementById("startBtn");
+  
+  if (startBtn) {
+    if (mode && category && difficulty) {
+      startBtn.classList.add("ready");
+    } else {
+      startBtn.classList.remove("ready");
+    }
+  }
 }
 
 function renderQuickProfile(username) {

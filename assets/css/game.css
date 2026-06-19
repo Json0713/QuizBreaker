@@ -261,12 +261,26 @@ ul {
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease, box-shadow 0.3s;
+  transition: background 0.3s ease, box-shadow 0.3s, transform 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .footer-btn:enabled:hover {
   background: #00bcd4;
   box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+.footer-btn.ready {
+  animation: pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 5px rgba(0, 217, 255, 0.4); transform: scale(1); }
+  50% { box-shadow: 0 0 20px rgba(0, 217, 255, 0.9); transform: scale(1.02); }
+  100% { box-shadow: 0 0 5px rgba(0, 217, 255, 0.4); transform: scale(1); }
 }
 
 .action-wrapper {

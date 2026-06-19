@@ -212,7 +212,6 @@ body {
   }
   .main-content {
     padding: 1rem;
-    padding-bottom: 4rem; /* Extra padding at the bottom to ensure the last button isn't blocked by the mobile URL bar */
   }
 }
 

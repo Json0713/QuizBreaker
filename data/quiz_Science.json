@@ -1,123 +1,123 @@
 {
     "Easy": [
         {
-            "question": "What does ICT stand for?",
-            "options": ["Information and Communication Technology", "Integrated Computer Tools", "Internet Communication Terminal", "Internal Circuit Test"],
-            "answer": "Information and Communication Technology",
+            "question": "What is the center of our solar system?",
+            "options": ["Earth", "Mars", "Sun", "Moon"],
+            "answer": "Sun",
             "type": "mcq"
         },
         {
-            "question": "Which of these is an input device?",
-            "options": ["Monitor", "Keyboard", "Speaker", "Printer"],
-            "answer": "Keyboard",
+            "question": "Which animal is known as the king of the jungle?",
+            "options": ["Tiger", "Elephant", "Lion", "Bear"],
+            "answer": "Lion",
             "type": "mcq"
         },
         {
-            "question": "Puzzle: I store everything, yet I never forget. What am I?",
-            "hint": "Think of a computer component.",
-            "answer": "memory",
+            "question": "Puzzle: I fall from the sky but I am not rain. I am white and cold. What am I?",
+            "hint": "Winter weather.",
+            "answer": "snow",
             "type": "puzzle"
         },
         {
-            "question": "Which file format is typically used for web images?",
-            "options": ["PDF", "JPG", "DOCX", "MP3"],
-            "answer": "JPG",
+            "question": "What do bees collect to make honey?",
+            "options": ["Pollen", "Leaves", "Water", "Nectar"],
+            "answer": "Nectar",
             "type": "mcq"
         },
         {
-            "question": "Which of these is a valid website domain?",
-            "options": ["example.com", "http://com", "www@site", "page#url"],
-            "answer": "example.com",
+            "question": "Which of these is a liquid?",
+            "options": ["Ice", "Water", "Steam", "Wood"],
+            "answer": "Water",
             "type": "mcq"
         },
         {
-            "question": "What is a common use of PowerPoint?",
-            "options": ["Data analysis", "Video editing", "Presentations", "Coding"],
-            "answer": "Presentations",
+            "question": "What do caterpillars turn into?",
+            "options": ["Beetles", "Butterflies", "Spiders", "Ants"],
+            "answer": "Butterflies",
             "type": "mcq"
         },
         {
-            "question": "Which icon usually represents the internet?",
-            "options": ["Folder", "Trash bin", "Globe", "Lock"],
-            "answer": "Globe",
+            "question": "What part of the plant absorbs water?",
+            "options": ["Leaf", "Stem", "Root", "Flower"],
+            "answer": "Root",
             "type": "mcq"
         },
         {
-            "question": "What is the shortcut for Copy?",
-            "options": ["Ctrl + V", "Ctrl + X", "Ctrl + C", "Ctrl + A"],
-            "answer": "Ctrl + C",
+            "question": "Which of these animals lives in the ocean?",
+            "options": ["Monkey", "Dolphin", "Giraffe", "Ostrich"],
+            "answer": "Dolphin",
             "type": "mcq"
         },
         {
-            "question": "Puzzle: I disappear the moment you say my name. What am I?",
-            "hint": "Related to silence.",
-            "answer": "silence",
+            "question": "Puzzle: I am hot and bright. I give you light during the day. What am I?",
+            "hint": "Look up in the sky.",
+            "answer": "sun",
             "type": "puzzle"
         },
         {
-            "question": "What app is commonly used for making spreadsheets?",
-            "options": ["Word", "PowerPoint", "Excel", "Outlook"],
-            "answer": "Excel",
+            "question": "How many legs does a spider have?",
+            "options": ["6", "8", "10", "12"],
+            "answer": "8",
             "type": "mcq"
         },
         {
-            "question": "Which of these is a social media platform?",
-            "options": ["Chrome", "Photoshop", "Facebook", "Excel"],
-            "answer": "Facebook",
+            "question": "Which planet is known as the Red Planet?",
+            "options": ["Venus", "Mars", "Jupiter", "Saturn"],
+            "answer": "Mars",
             "type": "mcq"
         },
         {
-            "question": "Which device is used to print documents?",
-            "options": ["Scanner", "Router", "Printer", "Projector"],
-            "answer": "Printer",
+            "question": "What is the hard outer covering of a turtle called?",
+            "options": ["Skin", "Scale", "Shell", "Bone"],
+            "answer": "Shell",
             "type": "mcq"
         },
         {
-            "question": "Puzzle: The more you take, the more you leave behind. What am I?",
-            "hint": "Think movement.",
-            "answer": "footsteps",
+            "question": "Puzzle: I can fly but I have no wings. I can cry but I have no eyes. What am I?",
+            "hint": "Floats in the sky.",
+            "answer": "cloud",
             "type": "puzzle"
         },
         {
-            "question": "What is used to connect to the internet at home?",
-            "options": ["Monitor", "Router", "Mouse", "Scanner"],
-            "answer": "Router",
+            "question": "Which bird is known for its beautiful tail feathers?",
+            "options": ["Eagle", "Peacock", "Parrot", "Penguin"],
+            "answer": "Peacock",
             "type": "mcq"
         },
         {
-            "question": "Which one is an online learning platform?",
-            "options": ["Moodle", "VLC", "Notepad", "Paint"],
-            "answer": "Moodle",
+            "question": "What do we use our ears for?",
+            "options": ["Seeing", "Hearing", "Tasting", "Smelling"],
+            "answer": "Hearing",
             "type": "mcq"
         },
         {
-            "question": "Which file type is a text file?",
-            "options": [".txt", ".mp4", ".jpg", ".exe"],
-            "answer": ".txt",
+            "question": "Which fruit is yellow and curved?",
+            "options": ["Apple", "Orange", "Banana", "Grape"],
+            "answer": "Banana",
             "type": "mcq"
         },
         {
-            "question": "What does USB stand for?",
-            "options": ["Universal Serial Bus", "Unique Service Bridge", "User System Backup", "Unified Signal Base"],
-            "answer": "Universal Serial Bus",
+            "question": "What is the frozen form of water?",
+            "options": ["Steam", "Cloud", "Rain", "Ice"],
+            "answer": "Ice",
             "type": "mcq"
         },
         {
-            "question": "Puzzle: I can fill a room but take up no space. What am I?",
-            "hint": "Think senses.",
-            "answer": "light",
+            "question": "Puzzle: I have a tail and a head, but no body. What am I?",
+            "hint": "Used to buy things.",
+            "answer": "coin",
             "type": "puzzle"
         },
         {
-            "question": "Which is used to display output?",
-            "options": ["Mouse", "Scanner", "Monitor", "Keyboard"],
-            "answer": "Monitor",
+            "question": "Which of these is a source of light?",
+            "options": ["Mirror", "Moon", "Lamp", "Water"],
+            "answer": "Lamp",
             "type": "mcq"
         },
         {
-            "question": "What does 'www' stand for?",
-            "options": ["Wide World Web", "Web World Wide", "World Wide Web", "Wide Web World"],
-            "answer": "World Wide Web",
+            "question": "What force pulls things down to the ground?",
+            "options": ["Magnetism", "Friction", "Gravity", "Electricity"],
+            "answer": "Gravity",
             "type": "mcq"
         }
     ],
