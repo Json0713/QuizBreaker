@@ -1,4 +1,5 @@
 // /assets/js/game.js — Simplified Final with Fallback Message, Optimized
+import { initSidebar } from './sidebar.js';
 
 let pendingDeleteIndex = null;
 let pendingUser = null;
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const user = getUser();
   if (!user) return redirectToLogin();
 
-  initializeUserInfo(user);
+  initSidebar();
   renderOptions("categoryOptions", categories, "category");
   renderOptions("difficultyOptions", difficulties, "difficulty");
   renderRecent(user.name);
@@ -45,12 +46,6 @@ function getUser() {
 function redirectToLogin() {
   localStorage.clear();
   location.href = "/index.html";
-}
-
-function initializeUserInfo(user) {
-  document.getElementById("userAvatar").textContent = user.name.charAt(0).toUpperCase();
-  document.querySelectorAll(".displayName").forEach(el => (el.textContent = user.name));
-  document.querySelectorAll(".displayJoined").forEach(el => (el.textContent = new Date(user.joinedAt).toLocaleString()));
 }
 
 function renderOptions(containerId, items, groupName) {
@@ -82,32 +77,18 @@ function toggleStartButton() {
 }
 
 function initEventListeners(username) {
-  document.getElementById("logoutBtn").addEventListener("click", () => {
-    document.getElementById("logoutModal").style.display = "flex";
-  });
-
-  document.getElementById("userInfo").addEventListener("click", () => {
-    document.getElementById("infoModal").style.display = "flex";
-  });
-
   document.querySelectorAll(".modal .cancel").forEach(btn => {
     btn.addEventListener("click", e => {
       e.target.closest(".modal").style.display = "none";
     });
   });
 
-  document.querySelector("#logoutModal .confirm").addEventListener("click", logout);
   document.querySelector("#deleteModal .confirm").addEventListener("click", confirmDelete);
-  document.querySelector("#infoModal .confirm").addEventListener("click", e => {
+  document.querySelector("#infoModal .confirm")?.addEventListener("click", e => {
     e.target.closest(".modal").style.display = "none";
   });
 
   document.getElementById("startBtn").addEventListener("click", startQuiz);
-}
-
-function logout() {
-  localStorage.removeItem("quizbreaker_user");
-  location.href = "../../index.html";
 }
 
 function startQuiz() {

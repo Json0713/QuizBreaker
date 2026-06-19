@@ -1,4 +1,5 @@
 // /assets/js/dashboard.js
+import { initSidebar } from './sidebar.js';
 
 const DEFAULT_CATEGORIES = ["ICT", "Science", "History"];
 
@@ -14,11 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const recent = JSON.parse(localStorage.getItem("quizbreaker_recent")) || [];
   if (!user) return location.href = "/index.html";
   
-  document.getElementById("userAvatar").textContent = user.name.charAt(0).toUpperCase();
-  document.querySelectorAll(".displayName").forEach(el => el.textContent = user.name);
-  document.querySelectorAll(".displayJoined").forEach(el => el.textContent = new Date(user.joinedAt).toLocaleString());
-  
-  document.getElementById("backBtn")?.addEventListener("click", () => location.href = "game.html");
+  initSidebar();
   document.querySelector(".alert-feedback .btn-close")?.addEventListener("click", () => {
     document.getElementById("feedbackAlert").classList.add("d-none");
   });
