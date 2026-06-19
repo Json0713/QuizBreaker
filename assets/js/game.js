@@ -31,12 +31,23 @@ export function initGame() {
   initEventListeners(user.name);
   
   // Handle mode selection change
+  const modeTips = {
+    "Standard": "<strong>Standard Mode:</strong> Answer 10 questions with a fixed time limit. Great for quick practice!",
+    "Survival": "<strong>Survival Mode:</strong> Time constantly drains! Correct answers add bonus time, but wrong answers cost you precious seconds."
+  };
+
   document.querySelectorAll("input[name='mode']").forEach(el => {
     el.addEventListener("change", (e) => {
       // Difficulty is now required for both modes
       const diffCard = document.getElementById("difficultyOptions").closest('.card');
       diffCard.style.opacity = "1";
       diffCard.style.pointerEvents = "auto";
+      
+      const tipDiv = document.getElementById("modeTip");
+      if (tipDiv && modeTips[e.target.value]) {
+        tipDiv.innerHTML = `<i class="bi bi-lightbulb-fill"></i> <div>${modeTips[e.target.value]}</div>`;
+        tipDiv.classList.remove("d-none");
+      }
     });
   });
 

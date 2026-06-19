@@ -119,6 +119,26 @@ h2 {
   gap: 0.75rem;
 }
 
+.mode-tip {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 217, 255, 0.08);
+  border-left: 3px solid var(--info);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: #ccc;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.mode-tip i {
+  color: var(--info);
+  font-size: 1rem;
+  margin-top: 2px;
+}
+
 .option {
   background: var(--neutral);
   padding: 0.75rem;
